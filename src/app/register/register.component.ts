@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+import { ConfirmedValidator } from './../confirmed.validator';
 
 @Component({
   selector: 'app-register',
@@ -8,25 +9,36 @@ import { FormGroup, FormControl } from '@angular/forms';
 })
 export class RegisterComponent implements OnInit {
 
-  constructor() { }
+  form: FormGroup;
+  constructor(private formBuider: FormBuilder) { }
 
   ngOnInit(): void {
+    this.form = this.formBuider.group({
+      username: new FormControl('', [Validators.required, Validators.minLength(3)]),
+      email: new FormControl('',[Validators.required, Validators.email]),
+      password: new FormControl('',Validators.required),
+      confirmPassword: new FormControl('', Validators.required),
+    },{
+      validator: ConfirmedValidator('password', 'confirmPassword')
+    });
+  
+  }
+
+  public hasError = (controlName: string, errorName: string) =>{
+    return this.form.controls[controlName].hasError(errorName);
   }
 
 
-  form: FormGroup = new FormGroup({
-    username: new FormControl(''),
-    email: new FormControl(''),
-    password: new FormControl(''),
-    confirmPassword: new FormControl(''),
-  });
 
   submit() {
     if (this.form.valid) {
       // this.submitEM.emit(this.form.value);
-      console.log(" error>>>")
+      
+      console.log(this.form.value)
+    }else{
+      console.log(" error>>>", this.form)
     }
-    console.log(this.form.value);
+   ;
   }
 
 }

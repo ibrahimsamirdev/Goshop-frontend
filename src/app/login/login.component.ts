@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { EventEmitter } from 'protractor';
 
 @Component({
@@ -15,16 +15,23 @@ export class LoginComponent implements OnInit {
   }
 
   form: FormGroup = new FormGroup({
-    username: new FormControl(''),
-    password: new FormControl(''),
+    username: new FormControl('', Validators.required),
+    password: new FormControl('', Validators.required),
   });
 
+  public hasError = (controlName: string, errorName: string) =>{
+    return this.form.controls[controlName].hasError(errorName);
+  }
+  
   submit() {
     if (this.form.valid) {
       // this.submitEM.emit(this.form.value);
+      
+      console.log(this.form.value);
+    }else{
       console.log(" error>>>")
     }
-    console.log(this.form.value);
+  
   }
   // @Input() error: string | null;
 

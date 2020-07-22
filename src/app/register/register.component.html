@@ -5,24 +5,32 @@
   <p>
     <mat-form-field>
       <input type="text" matInput placeholder="Username" formControlName="username">
+      <mat-error *ngIf="hasError('username', 'required')">Username is required</mat-error>
+      <mat-error *ngIf="hasError('username', 'minlength')">useName should be more than 2 characters</mat-error>
+    
     </mat-form-field>
   </p>
 
   <p>
     <mat-form-field>
       <input type="email" matInput placeholder="Email" formControlName="email">
+      <mat-error *ngIf="hasError('email', 'required')">Email is required</mat-error>
+      <mat-error *ngIf="hasError('email', 'email')">Enter valid email</mat-error>
     </mat-form-field>
   </p>
 
   <p>
     <mat-form-field>
       <input type="password" matInput placeholder="Password" formControlName="password">
+      <mat-error *ngIf="hasError('password', 'required')">Password is required</mat-error>
     </mat-form-field>
   </p>
 
   <p>
     <mat-form-field>
       <input type="password" matInput placeholder="Confirm Password" formControlName="confirmPassword">
+      <mat-error *ngIf="hasError('confirmPassword', 'required')">Confirm Password is required</mat-error>
+      <mat-error *ngIf="hasError('confirmPassword', 'confirmedValidator')">Not match</mat-error>
     </mat-form-field>
   </p>
 

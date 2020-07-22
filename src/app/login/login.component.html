@@ -5,12 +5,14 @@
   <p>
     <mat-form-field>
       <input type="text" matInput placeholder="Username" formControlName="username">
+      <mat-error *ngIf="hasError('username', 'required')">Username is required</mat-error>
     </mat-form-field>
   </p>
 
   <p>
     <mat-form-field>
       <input type="password" matInput placeholder="Password" formControlName="password">
+      <mat-error *ngIf="hasError('password', 'required')">Password is required</mat-error>
     </mat-form-field>
   </p>
 

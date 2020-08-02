@@ -12,4 +12,11 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  logout(){
+    localStorage.removeItem('goShopToken');
+  }
+
+  isLoggedin(){
+    return (localStorage.getItem('goShopToken') ==null)? false:true;
+  }
 }

@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { EventEmitter } from 'protractor';
 import { DataService } from '../data.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +12,7 @@ import { DataService } from '../data.service';
 export class LoginComponent implements OnInit {
 
   errorMessage;
-  constructor(private dataService: DataService) { }
+  constructor(private dataService: DataService, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -28,13 +29,12 @@ export class LoginComponent implements OnInit {
   login() {
     if (this.form.valid) {
       // this.submitEM.emit(this.form.value);
-      this.errorMessage = '';
-      console.log(this.form);
-      console.log(this.form.value);
       this.dataService.login(this.form.value.username, this.form.value.password).subscribe(data => {
-        console.log('>>>> login response: ',data);
+        
+        localStorage.setItem('goShopToken', data.toString());
+        this.router.navigate(['']);
       },
-      (error) => {                              //Error callback
+      (error) => {
         this.errorMessage = error;
       });
     }else{
@@ -42,7 +42,5 @@ export class LoginComponent implements OnInit {
     }
   
   }
-  // @Input() error: string | null;
 
-  // @Output() submitEM = new EventEmitter();
 }

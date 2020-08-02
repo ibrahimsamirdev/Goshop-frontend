@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { ConfirmedValidator } from './../confirmed.validator';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-register',
@@ -9,8 +10,9 @@ import { ConfirmedValidator } from './../confirmed.validator';
 })
 export class RegisterComponent implements OnInit {
 
+  errorMessage;
   form: FormGroup;
-  constructor(private formBuider: FormBuilder) { }
+  constructor(private formBuider: FormBuilder, private dataService: DataService) { }
 
   ngOnInit(): void {
     this.form = this.formBuider.group({
@@ -30,11 +32,19 @@ export class RegisterComponent implements OnInit {
 
 
 
-  submit() {
+  register() {
     if (this.form.valid) {
       // this.submitEM.emit(this.form.value);
       
       console.log(this.form.value)
+      this.dataService.register(this.form.value).subscribe(data => {
+        console.log('>>> register response: ',data);
+      },
+      (error) => {       
+        console.log('>> error in register com: ',error)
+        //Error callback
+        this.errorMessage = error;
+      });
     }else{
       console.log(" error>>>", this.form)
     }

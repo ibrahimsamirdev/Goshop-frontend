@@ -22,6 +22,10 @@
     background-color: red;
   }
 
+  .err {
+    color: red;
+  }
+
   .button {
     display: flex;
     justify-content: flex-end;

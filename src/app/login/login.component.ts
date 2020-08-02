@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { EventEmitter } from 'protractor';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-login',
@@ -9,7 +10,8 @@ import { EventEmitter } from 'protractor';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  errorMessage;
+  constructor(private dataService: DataService) { }
 
   ngOnInit(): void {
   }
@@ -23,11 +25,18 @@ export class LoginComponent implements OnInit {
     return this.form.controls[controlName].hasError(errorName);
   }
   
-  submit() {
+  login() {
     if (this.form.valid) {
       // this.submitEM.emit(this.form.value);
-      
+      this.errorMessage = '';
+      console.log(this.form);
       console.log(this.form.value);
+      this.dataService.login(this.form.value.username, this.form.value.password).subscribe(data => {
+        console.log('>>>> login response: ',data);
+      },
+      (error) => {                              //Error callback
+        this.errorMessage = error;
+      });
     }else{
       console.log(" error>>>")
     }

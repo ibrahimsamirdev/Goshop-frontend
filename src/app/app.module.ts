@@ -12,6 +12,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { SidenavComponent } from './sidenav/sidenav.component';
+import { VendorEmployeesComponent } from './vendor-employees/vendor-employees.component';
 
 
 
@@ -23,7 +25,9 @@ import { HttpClientModule } from '@angular/common/http';
     HeaderComponent,
     FooterComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    SidenavComponent,
+    VendorEmployeesComponent
   ],
   imports: [
     BrowserModule,

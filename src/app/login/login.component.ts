@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { EventEmitter } from 'protractor';
-import { DataService } from '../data.service';
+import { DataService } from '../services/data.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
 
   errorMessage;
+  private loggedUser;
   constructor(private dataService: DataService, private router: Router) { }
 
   ngOnInit(): void {
@@ -30,8 +31,9 @@ export class LoginComponent implements OnInit {
     if (this.form.valid) {
       // this.submitEM.emit(this.form.value);
       this.dataService.login(this.form.value.username, this.form.value.password).subscribe(data => {
-        
-        localStorage.setItem('goShopToken', data.toString());
+        this.loggedUser = data;
+        localStorage.setItem('token', this.loggedUser.token);
+        localStorage.setItem('currentUser', JSON.stringify(this.loggedUser.user));
         this.router.navigate(['']);
       },
       (error) => {

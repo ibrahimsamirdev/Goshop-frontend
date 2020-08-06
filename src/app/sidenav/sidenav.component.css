@@ -1,0 +1,27 @@
+.logo{
+    color: #54b7ef;
+    font-size: larger;
+    font-weight: 900;
+}
+
+.user-panel{
+    position: relative;
+    width: 100%;
+    padding: 25px 5px;
+    text-align: center;
+    background-color: #e2e9f1;
+    height: 120px;
+}
+
+.nav{
+    width: 100%;
+}
+
+.item{
+    background-color: #343a40;
+}
+
+.item:hover{
+    background-color: #e2e9f1;
+    color: white;
+}

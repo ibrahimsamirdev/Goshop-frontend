@@ -7,7 +7,7 @@ import { retry, catchError } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
-export class DataService {
+export class UserService {
 
   constructor(private httpClient: HttpClient) { }
 
@@ -26,6 +26,14 @@ export class DataService {
     return this.httpClient.post(environment.apiGateway+'/api/register',user, {responseType: 'text' as 'json'});
   }
 
+  vendorEmployees(vendorId){
+    return this.httpClient.get(environment.userManagement+'/api/user/employees/'+vendorId);
+    
+  }
+
+  getAllUsers(){
+    return this.httpClient.get(environment.userManagement+"/api/user");
+  }
    // Error handling
    errorHandl(error) {
     let errorMessage = '';
@@ -45,3 +53,4 @@ export class DataService {
     return throwError(errorMessage);
  }
 }
+

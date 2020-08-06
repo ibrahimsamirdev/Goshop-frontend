@@ -13,10 +13,10 @@ export class HeaderComponent implements OnInit {
   }
 
   logout(){
-    localStorage.removeItem('goShopToken');
+    localStorage.removeItem('token');
   }
 
   isLoggedin(){
-    return (localStorage.getItem('goShopToken') ==null)? false:true;
+    return (localStorage.getItem('token') ==null)? false:true;
   }
 }

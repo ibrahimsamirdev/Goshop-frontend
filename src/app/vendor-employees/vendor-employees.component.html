@@ -1,0 +1,43 @@
+<app-header></app-header>
+<div class="row">
+<div class="col-2 ">
+    <app-sidenav></app-sidenav>
+</div>
+<div class="col-10 container">
+    
+    <div *ngIf="errorMessage" class="alert alert-danger" role="alert">
+        <h4 class="alert-heading">OOPS!</h4>
+        <p>Somthing went wrong.</p>
+        <hr>
+        <p class="mb-0">{{errorMessage}}</p>
+      </div>
+
+      <div *ngIf="users?.length ==0" class="alert alert-success" role="alert">
+        <h4 class="alert-heading">OOPS!</h4>
+        <p>There is no employees.</p>
+      </div>
+
+    <table *ngIf="!errorMessage && users?.length >0" class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th>Email</th>
+            <th>Name</th>
+            <th>Role</th>
+            <th>Edit</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of users">
+            <td>{{user.email}}</td>
+            <td>{{user.name}}</td>
+            <td>{{user.role?.role}}</td>
+            <td><button type="button" class="btn btn-outline-info">Edit</button></td>
+            <td><button type="button" class="btn btn-outline-danger">Delete</button></td>
+          </tr>
+          
+        </tbody>
+      </table>
+      
+</div>
+</div>

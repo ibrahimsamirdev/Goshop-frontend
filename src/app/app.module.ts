@@ -14,6 +14,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { VendorEmployeesComponent } from './vendor-employees/vendor-employees.component';
+import { UserFormComponent } from './user-form/user-form.component';
 
 
 
@@ -27,7 +28,8 @@ import { VendorEmployeesComponent } from './vendor-employees/vendor-employees.co
     LoginComponent,
     RegisterComponent,
     SidenavComponent,
-    VendorEmployeesComponent
+    VendorEmployeesComponent,
+    UserFormComponent
   ],
   imports: [
     BrowserModule,

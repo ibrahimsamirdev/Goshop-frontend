@@ -4,7 +4,9 @@
     <app-sidenav></app-sidenav>
 </div>
 <div class="col-10 container">
-    
+    <div class=" row">
+      <button type="button" class="btn btn-info" (click)="openModal()">Add Employee</button>
+    </div>
     <div *ngIf="errorMessage" class="alert alert-danger" role="alert">
         <h4 class="alert-heading">OOPS!</h4>
         <p>Somthing went wrong.</p>

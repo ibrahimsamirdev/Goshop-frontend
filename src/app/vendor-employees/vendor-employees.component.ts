@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { error } from 'protractor';
 import { UserService } from '../services/user.service';
+import { MatDialogConfig, MatDialog } from '@angular/material/dialog';
+import { UserFormComponent } from '../user-form/user-form.component';
   
 @Component({
   selector: 'app-vendor-employees',
@@ -13,7 +15,7 @@ export class VendorEmployeesComponent implements OnInit {
   users;
   errorMessage;
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, public matDialog: MatDialog) { }
 
   ngOnInit(): void {
     let currentUser = JSON.parse(localStorage.getItem('currentUser'));
@@ -35,6 +37,17 @@ export class VendorEmployeesComponent implements OnInit {
     (error) => {
       this.errorMessage = error;
     });
+  }
+
+  openModal() {
+    const dialogConfig = new MatDialogConfig();
+    // The user can't close the dialog by clicking outside its body
+    dialogConfig.disableClose = false;
+    dialogConfig.id = "modal-component";
+    dialogConfig.maxHeight = "800px";
+    dialogConfig.width = "600px";
+    // https://material.angular.io/components/dialog/overview
+    const modalDialog = this.matDialog.open(UserFormComponent, dialogConfig);
   }
 
 }

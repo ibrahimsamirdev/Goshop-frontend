@@ -52,5 +52,13 @@ export class UserService {
     console.log('>>> erroe : ',error);
     return throwError(errorMessage);
  }
+
+ getAllRoles(){
+   return this.httpClient.get(environment.userManagement+"/api/role");
+ }
+
+ getAllVendors(){
+    return this.httpClient.get(environment.userManagement+"/api/user/vendors");
+ }
 }
 

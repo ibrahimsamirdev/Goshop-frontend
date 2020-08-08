@@ -16,6 +16,9 @@ import { SidenavComponent } from './sidenav/sidenav.component';
 import { VendorEmployeesComponent } from './vendor-employees/vendor-employees.component';
 import { VendorAddUserComponent } from './vendor-add-user/vendor-add-user.component';
 import { VendorEditUserComponent } from './vendor-edit-user/vendor-edit-user.component';
+import { VendorProductsComponent } from './vendor-products/vendor-products.component';
+import { VendorAddProductComponent } from './vendor-add-product/vendor-add-product.component';
+import { VendorEditProductComponent } from './vendor-edit-product/vendor-edit-product.component';
 
 
 
@@ -31,7 +34,10 @@ import { VendorEditUserComponent } from './vendor-edit-user/vendor-edit-user.com
     SidenavComponent,
     VendorEmployeesComponent,
     VendorAddUserComponent,
-    VendorEditUserComponent
+    VendorEditUserComponent,
+    VendorProductsComponent,
+    VendorAddProductComponent,
+    VendorEditProductComponent
     
   ],
   imports: [

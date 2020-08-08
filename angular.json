@@ -125,5 +125,8 @@
       }
     }
   },
-  "defaultProject": "Goshop-frontend"
+  "defaultProject": "Goshop-frontend",
+  "cli": {
+    "analytics": "59e664f8-18f1-4c8a-9c0b-62de8dfe9a57"
+  }
 }

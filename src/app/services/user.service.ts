@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
+import { env } from 'process';
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +20,10 @@ export class UserService {
     .pipe(
       catchError(this.errorHandl)
     );
+  }
+
+  getCurrentUser(){
+    return JSON.parse(localStorage.getItem('currentUser'));
   }
 
   register(user){
@@ -57,8 +62,24 @@ export class UserService {
    return this.httpClient.get(environment.userManagement+"/api/role");
  }
 
+ getVendorEmployeesRoles(){
+  return this.httpClient.get(environment.userManagement+"/api/role/vendor/employees");
+}
+
  getAllVendors(){
     return this.httpClient.get(environment.userManagement+"/api/user/vendors");
+ }
+
+ createUser(user){
+  return this.httpClient.post(environment.userManagement+"/api/user",user);
+ }
+
+ deleteUser(userId){
+   return this.httpClient.delete(environment.userManagement+"/api/user/"+userId, {responseType:'text' as 'json'});
+ }
+
+ updateUser(user){
+   return this.httpClient.put(environment.userManagement+"/api/user",user);
  }
 }
 

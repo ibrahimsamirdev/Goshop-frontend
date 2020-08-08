@@ -19,10 +19,11 @@ export class RegisterComponent implements OnInit {
     this.form = this.formBuider.group({
       username: new FormControl('', [Validators.required, Validators.minLength(3)]),
       email: new FormControl('',[Validators.required, Validators.email]),
-      password: new FormControl('',Validators.required),
-      confirmPassword: new FormControl('', Validators.required),
+      mobile: new FormControl('',),
+      pass: new FormControl('',Validators.required),
+      confirmPass: new FormControl('', Validators.required),
     },{
-      validator: ConfirmedValidator('password', 'confirmPassword')
+      validator: ConfirmedValidator('pass', 'confirmPass')
     });
   
   }

@@ -4,7 +4,10 @@
     <app-sidenav></app-sidenav>
 </div>
 <div class="col-10 container">
-    
+    <div class="row">
+      <button type="button" class="btn btn-info" (click)="openAddUserModal()">Add Employee</button>
+    </div>
+
     <div *ngIf="errorMessage" class="alert alert-danger" role="alert">
         <h4 class="alert-heading">OOPS!</h4>
         <p>Somthing went wrong.</p>
@@ -22,18 +25,20 @@
           <tr>
             <th>Email</th>
             <th>Name</th>
+            <th>mobile</th>
             <th>Role</th>
             <th>Edit</th>
             <th>Delete</th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let user of users">
+          <tr *ngFor="let user of users; let i = index">
             <td>{{user.email}}</td>
             <td>{{user.name}}</td>
+            <td>{{user.mobile}}</td>
             <td>{{user.role?.role}}</td>
-            <td><button type="button" class="btn btn-outline-info">Edit</button></td>
-            <td><button type="button" class="btn btn-outline-danger">Delete</button></td>
+            <td><button type="button" class="btn btn-outline-info" (click)= "openEditUserModal(i, user)">Edit</button></td>
+            <td><button type="button" class="btn btn-outline-danger" (click)="confirmBox(i, user.id)">Delete</button></td>
           </tr>
           
         </tbody>

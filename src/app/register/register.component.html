@@ -21,16 +21,16 @@
 
   <p>
     <mat-form-field>
-      <input type="password" matInput placeholder="Password" formControlName="password">
-      <mat-error *ngIf="hasError('password', 'required')">Password is required</mat-error>
+      <input type="password" matInput placeholder="Password" formControlName="pass">
+      <mat-error *ngIf="hasError('pass', 'required')">Password is required</mat-error>
     </mat-form-field>
   </p>
 
   <p>
     <mat-form-field>
-      <input type="password" matInput placeholder="Confirm Password" formControlName="confirmPassword">
-      <mat-error *ngIf="hasError('confirmPassword', 'required')">Confirm Password is required</mat-error>
-      <mat-error *ngIf="hasError('confirmPassword', 'confirmedValidator')">Not match</mat-error>
+      <input type="password" matInput placeholder="Confirm Password" formControlName="confirmPass">
+      <mat-error *ngIf="hasError('confirmPass', 'required')">Confirm Password is required</mat-error>
+      <mat-error *ngIf="hasError('confirmPass', 'confirmedValidator')">Not match</mat-error>
     </mat-form-field>
   </p>
 

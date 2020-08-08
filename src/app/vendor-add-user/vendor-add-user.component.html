@@ -1,0 +1,68 @@
+<form [formGroup]= "userForm" (submit)="addEmployee()">
+    <div class="form-group">
+      <label for="exampleInputEmail1">Email</label>
+      <input type="email" formControlName="email" class="form-control" id="exampleInputEmail1" 
+      [ngClass]="{'is-invalid':submitted && formControls.email.errors}" aria-describedby="emailHelp" placeholder="Enter email">
+      <small  class="text-danger" *ngIf="submitted && hasError('email', 'required')">
+        Email is required.
+      </small> 
+      <small  class="text-danger" *ngIf="submitted && hasError('email', 'email')">
+        Enter valid email.
+      </small>  
+    </div>
+
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" formControlName ="name" class="form-control" id="name" 
+        [ngClass]="{'is-invalid':submitted && formControls.name.errors}" aria-describedby="emailHelp" placeholder="Enter name">
+        <small  class="text-danger" *ngIf="submitted && hasError('name', 'required')">
+          Name is required.
+        </small> 
+    </div>
+
+      <div class="form-group">
+        <label for="mobile">mobile</label>
+        <input type="text" formControlName="mobile" class="form-control " 
+         id="name" aria-describedby="emailHelp" placeholder="Enter mobile">
+        <!-- <small id="passwordHelp" class="text-danger" *ngIf="hasError(mobile, required)">
+            Field is required.
+          </small>    -->
+    </div>
+    <div class="form-group">
+      <label for="pass">Password</label>
+      <input type="password" formControlName="pass" class="form-control" id="pass" placeholder="Password"
+      [ngClass]="{'is-invalid': submitted && formControls.pass.errors}">
+      <small  class="text-danger" *ngIf="submitted && hasError('pass', 'required')">
+        Password is required.
+      </small>
+    </div>
+
+    <div class="form-group">
+        <label for="pass">Confirm Password</label>
+        <input type="password" formControlName ="confirmPass" form class="form-control" id="confirmPass"
+        [ngClass]="{'is-invalid': submitted && formControls.confirmPass.errors}" placeholder="Confirm Password">
+      </div>
+      <small  class="text-danger" *ngIf="submitted && hasError('confirmPass', 'confirmedValidator')">
+        Password not match.
+      </small>
+    <div class="form-group" >
+        <label for="role">Role</label>
+        <select class="form-control" id="role" formControlName="role"
+        [ngClass]="{'is-invalid': submitted && formControls.role.errors}">
+          <option [ngValue]=null>selectRole</option>
+          <option *ngFor="let role of roles" [ngValue] ="role">{{role.role}}</option>
+        </select>
+        <small  class="text-danger" *ngIf="submitted && hasError('role', 'required')">
+          role is required.
+        </small>
+    </div>
+    <!-- <div class="form-group" >
+        <label for="vendor">Vendor</label>
+        <select class="form-control" id="vendor" formControlName="vendor">
+          <option [ngValue]="null">select Vendor</option>
+          <option *ngFor="let v of vendors" [ngValue] ="v">{{v.name}}</option>
+        </select>
+    </div> -->
+    <p *ngIf="errorMessage" class="err">{{errorMessage}}</p >
+    <button type="submit" class="btn btn-primary">Add</button>
+  </form>

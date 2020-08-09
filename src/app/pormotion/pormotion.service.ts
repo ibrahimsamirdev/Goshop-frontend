@@ -7,7 +7,7 @@ import { environment } from 'src/environments/environment';
 })
 export class PormotionService {
 
-  getPormotionsURL: string =environment.productservice+'/promotion/';
+  getPormotionsURL: string =environment.productService+'/promotion/';
 
   constructor(private http: HttpClient) { }
   getAllPormotion() {

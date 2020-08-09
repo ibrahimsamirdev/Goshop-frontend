@@ -7,6 +7,7 @@ import { VendorEmployeesComponent } from './vendor-employees/vendor-employees.co
 import { VendorProductsComponent } from './vendor-products/vendor-products.component';
 import { CartItemsComponent} from './cart-items/cart-items.component'
 import { AuthGuardGuard } from './services/auth-guard.guard';
+import { PormotionComponent } from './pormotion/pormotion/pormotion.component';
 
 
 const routes: Routes = [
@@ -18,7 +19,9 @@ const routes: Routes = [
   {path:"cart/cart-items", 
   component:CartItemsComponent,
   canActivate: [AuthGuardGuard]
-}
+},
+  {path: "pormotion", component:PormotionComponent}
+  
 ];
 
 @NgModule({

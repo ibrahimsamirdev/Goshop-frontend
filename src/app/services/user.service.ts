@@ -32,16 +32,22 @@ export class UserService {
 
   register(user){
 
-    return this.httpClient.post(environment.apiGateway+'/api/register',user, {responseType: 'text' as 'json'});
+    return this.httpClient.post(environment.apiGateway+'/api/register',user, {responseType: 'text' as 'json'}).pipe(
+      catchError(this.errorHandl)
+    );
   }
 
   vendorEmployees(vendorId){
-    return this.httpClient.get(environment.userManagement+'/api/user/employees/'+vendorId);
+    return this.httpClient.get(environment.userManagement+'/api/user/employees/'+vendorId).pipe(
+      catchError(this.errorHandl)
+    );
     
   }
 
   getAllUsers(){
-    return this.httpClient.get(environment.userManagement+"/api/user");
+    return this.httpClient.get(environment.userManagement+"/api/user").pipe(
+      catchError(this.errorHandl)
+    );
   }
    // Error handling
    errorHandl(error) {
@@ -63,27 +69,39 @@ export class UserService {
  }
 
  getAllRoles(){
-   return this.httpClient.get(environment.userManagement+"/api/role");
+   return this.httpClient.get(environment.userManagement+"/api/role").pipe(
+    catchError(this.errorHandl)
+  );
  }
 
  getVendorEmployeesRoles(){
-  return this.httpClient.get(environment.userManagement+"/api/role/vendor/employees");
+  return this.httpClient.get(environment.userManagement+"/api/role/vendor/employees").pipe(
+    catchError(this.errorHandl)
+  );
 }
 
  getAllVendors(){
-    return this.httpClient.get(environment.userManagement+"/api/user/vendors");
+    return this.httpClient.get(environment.userManagement+"/api/user/vendors").pipe(
+      catchError(this.errorHandl)
+    );
  }
 
  createUser(user){
-  return this.httpClient.post(environment.userManagement+"/api/user",user);
+  return this.httpClient.post(environment.userManagement+"/api/user",user).pipe(
+    catchError(this.errorHandl)
+  );
  }
 
  deleteUser(userId){
-   return this.httpClient.delete(environment.userManagement+"/api/user/"+userId, {responseType:'text' as 'json'});
+   return this.httpClient.delete(environment.userManagement+"/api/user/"+userId, {responseType:'text' as 'json'}).pipe(
+    catchError(this.errorHandl)
+  );
  }
 
  updateUser(user){
-   return this.httpClient.put(environment.userManagement+"/api/user",user);
+   return this.httpClient.put(environment.userManagement+"/api/user",user).pipe(
+    catchError(this.errorHandl)
+  );
  }
 }
 

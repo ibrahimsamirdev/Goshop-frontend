@@ -19,6 +19,7 @@ import { VendorEditUserComponent } from './vendor-edit-user/vendor-edit-user.com
 import { VendorProductsComponent } from './vendor-products/vendor-products.component';
 import { VendorAddProductComponent } from './vendor-add-product/vendor-add-product.component';
 import { VendorEditProductComponent } from './vendor-edit-product/vendor-edit-product.component';
+import { CartItemsComponent } from './cart-items/cart-items.component';
 
 
 
@@ -37,7 +38,8 @@ import { VendorEditProductComponent } from './vendor-edit-product/vendor-edit-pr
     VendorEditUserComponent,
     VendorProductsComponent,
     VendorAddProductComponent,
-    VendorEditProductComponent
+    VendorEditProductComponent,
+    CartItemsComponent
     
   ],
   imports: [

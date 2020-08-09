@@ -1,0 +1,8 @@
+img{
+    height: 150px;
+    width: 170ox;
+}
+#content{
+    overflow-y:scroll;
+    max-height: 600px;
+}

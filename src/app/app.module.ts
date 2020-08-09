@@ -12,13 +12,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { SidenavComponent } from './sidenav/sidenav.component';
 import { VendorEmployeesComponent } from './vendor-employees/vendor-employees.component';
+import { SidenavComponent } from './sidenav/sidenav.component';
 import { VendorAddUserComponent } from './vendor-add-user/vendor-add-user.component';
 import { VendorEditUserComponent } from './vendor-edit-user/vendor-edit-user.component';
 import { VendorProductsComponent } from './vendor-products/vendor-products.component';
 import { VendorAddProductComponent } from './vendor-add-product/vendor-add-product.component';
 import { VendorEditProductComponent } from './vendor-edit-product/vendor-edit-product.component';
+import { PormotionModule } from './pormotion/pormotion.module';
+import { RouterModule } from '@angular/router';
+ 
 
 
 
@@ -38,7 +41,6 @@ import { VendorEditProductComponent } from './vendor-edit-product/vendor-edit-pr
     VendorProductsComponent,
     VendorAddProductComponent,
     VendorEditProductComponent
-    
   ],
   imports: [
     BrowserModule,
@@ -47,8 +49,11 @@ import { VendorEditProductComponent } from './vendor-edit-product/vendor-edit-pr
     FormsModule,
     ReactiveFormsModule,
     MaterialModule,
-    HttpClientModule
-
+    HttpClientModule,
+    RouterModule.forRoot([
+      {path:'pormotion',loadChildren:()=>import('./pormotion/pormotion.module').then(m=>m.PormotionModule)}
+      
+    ])
   ],
   providers: [],
   bootstrap: [AppComponent]

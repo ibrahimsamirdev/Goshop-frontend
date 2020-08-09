@@ -5,6 +5,9 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { VendorEmployeesComponent } from './vendor-employees/vendor-employees.component';
 import { VendorProductsComponent } from './vendor-products/vendor-products.component';
+import { PormotionModule } from './pormotion/pormotion.module';
+import { AddPormotionComponent } from './pormotion/add-pormotion/add-pormotion.component';
+import { PormotionComponent } from './pormotion/pormotion/pormotion.component';
 
 
 const routes: Routes = [
@@ -12,7 +15,9 @@ const routes: Routes = [
   {path: "login", component: LoginComponent},
   {path: "register", component: RegisterComponent},
   {path: "vendor/employees", component:VendorEmployeesComponent},
-  {path: "vendor/products", component:VendorProductsComponent}
+  {path: "vendor/products", component:VendorProductsComponent},
+  {path: "pormotion", component:PormotionComponent}
+  
 ];
 
 @NgModule({

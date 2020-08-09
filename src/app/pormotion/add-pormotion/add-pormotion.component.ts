@@ -23,10 +23,8 @@ export class AddPormotionComponent   {
         title: new FormControl('',Validators.required),
         startDate: new FormControl('',Validators.required),
         endDate: new FormControl('',Validators.required),
-        discount: new FormControl('',Validators.required),
+        discount: new FormControl('',Validators.required)
        
-      },{
-        validator: ConfirmedValidator('pass', 'confirmPass')
       });
       
     }
@@ -46,7 +44,7 @@ export class AddPormotionComponent   {
     if(this.pormotionForm.valid ){
  
       this.PormotionService.createdPormotion(pormotion).subscribe(data => {
-          this.  createdPormotion = data;
+          this.createdPormotion = data;
           this.closeDialog(this.createdPormotion);
       })
     }

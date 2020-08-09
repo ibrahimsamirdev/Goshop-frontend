@@ -1,0 +1,39 @@
+<div class="col-10 container">
+    <div class="col-10 container">
+        <div class="row">
+            <button type="button" class="btn btn-info" (click)= "openAddPormotionModal()">Add Pormotion</button> </div>
+
+            <div *ngIf="errorMessage" class="alert alert-danger" role="alert">
+                <h4 class="alert-heading">OOPS!</h4>
+                <p>Somthing went wrong.</p>
+                <hr>
+                <p class="mb-0">{{errorMessage}}</p>
+              </div>
+
+              <div *ngIf="pormotions?.length ==0" class="alert alert-success" role="alert">
+                <h4 class="alert-heading">OOPS!</h4>
+                <p>There is no pormotion.</p>
+              </div>
+              <table *ngIf="!errorMessage && pormotions?.length >0" class="table">
+                <thead class="thead-dark">
+                  <tr>
+                    <th>Title</th>
+                    <th>start Date</th>
+                    <th>end Date</th>
+                    <th>discount</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let pormotion of pormotions; let i = index">
+                    <td>{{pormotion.title}}</td>
+                    <td>{{pormotion.startDate|date}}</td>
+                    <td>{{pormotion.endDate|date}}</td>
+                    <td>{{pormotion.discount}}</td>
+                    <!-- <td>{{pormotion.role?.role}}</td> -->
+                    <td><button type="button" class="btn btn-outline-info" (click)= "openEditPormotionModal(i, pormotion)">Edit</button></td>
+                    <td><button type="button" class="btn btn-outline-danger" (click)="confirmBox(i, pormotion.id)">Delete</button></td>
+                    </tr>
+                </tbody>
+            </table>
+    </div>
+</div>

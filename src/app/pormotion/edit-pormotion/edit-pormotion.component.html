@@ -1,0 +1,32 @@
+<form [formGroup]="pormotionForm" (submit)="editPormotion()">
+
+    <div class="form-group">
+        <label for="startDate1">start Date</label>
+        <input type="date" formControlName="startDate" class="form-control" id="startDate1" 
+        [ngClass]="{'is-invalid':submitted && formControls.startDate.errors}" placeholder="Enter start Date">
+          <small  class="text-danger" *ngIf="submitted  && hasError('startDate','required')">
+            Start date is required.
+          </small>  
+      </div>
+    
+      <div class="form-group">
+        <label for="endDate1">end Date</label>
+        <input type="date" formControlName="endDate" class="form-control" id="endDate1" 
+        [ngClass]="{'is-invalid':submitted && formControls.endDate.errors}" placeholder="Enter end Date">
+          <small  class="text-danger" *ngIf="submitted  && hasError('endDate','required')">
+            End date is required.
+          </small>  
+      </div>
+          
+      <div class="form-group">
+        <label for="discount1">discount</label>
+        <input type="number" formControlName="discount" class="form-control" id="discount1" 
+        [ngClass]="{'is-invalid':submitted && formControls.discount.errors}" placeholder="Enter discount %">
+          <small  class="text-danger" *ngIf="submitted  && hasError('discount','required')">
+            discount is required.
+          </small>  
+      </div>
+        <p *ngIf="errorMessage" class="err">{{errorMessage}}</p >
+        <button type="submit" class="btn btn-primary">Edit-Done</button>
+      </form>
+    

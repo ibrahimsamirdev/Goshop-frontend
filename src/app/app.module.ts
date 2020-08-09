@@ -20,6 +20,7 @@ import { VendorProductsComponent } from './vendor-products/vendor-products.compo
 import { VendorAddProductComponent } from './vendor-add-product/vendor-add-product.component';
 import { VendorEditProductComponent } from './vendor-edit-product/vendor-edit-product.component';
 import { CartItemsComponent } from './cart-items/cart-items.component';
+import { AuthGuardGuard } from './services/auth-guard.guard';
 
 
 
@@ -52,7 +53,7 @@ import { CartItemsComponent } from './cart-items/cart-items.component';
     HttpClientModule
 
   ],
-  providers: [],
+  providers: [AuthGuardGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

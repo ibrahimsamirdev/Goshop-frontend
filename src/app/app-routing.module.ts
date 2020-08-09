@@ -6,6 +6,7 @@ import { RegisterComponent } from './register/register.component';
 import { VendorEmployeesComponent } from './vendor-employees/vendor-employees.component';
 import { VendorProductsComponent } from './vendor-products/vendor-products.component';
 import { CartItemsComponent} from './cart-items/cart-items.component'
+import { AuthGuardGuard } from './services/auth-guard.guard';
 
 
 const routes: Routes = [
@@ -14,7 +15,10 @@ const routes: Routes = [
   {path: "register", component: RegisterComponent},
   {path: "vendor/employees", component:VendorEmployeesComponent},
   {path: "vendor/products", component:VendorProductsComponent},
-  {path:"cart/cart-items", component:CartItemsComponent}
+  {path:"cart/cart-items", 
+  component:CartItemsComponent,
+  canActivate: [AuthGuardGuard]
+}
 ];
 
 @NgModule({

@@ -26,6 +26,10 @@ export class UserService {
     return JSON.parse(localStorage.getItem('currentUser'));
   }
 
+  isLoggedin(){
+    return (localStorage.getItem('token') ==null)? false:true;
+  }
+
   register(user){
 
     return this.httpClient.post(environment.apiGateway+'/api/register',user, {responseType: 'text' as 'json'});

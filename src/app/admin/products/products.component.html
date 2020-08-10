@@ -1,0 +1,66 @@
+<!-- <app-header></app-header> -->
+<div class="row">
+<div class="col-2 ">
+    <app-admin-sidenav></app-admin-sidenav>
+</div>
+<div class="col-10 " data-spy="scroll"  >
+
+    <div class="container" data-spy="scroll" >
+    <div class=" row content "  id="filter"><!-- justify-content-center  align-items-center-->
+        <div class="float-left">
+            <select class="browser-default custom-select" (change)="fetchProductsBy($event)">
+                <option value="allProducts" selected>All Products</option>
+                <option value="published">Published</option>
+                <option value="nonPublished">Not published</option>
+                <option value="deleted">Deleted</option>
+              </select>
+        </div>
+        <div class="float-right">
+            <button type="button" class="btn btn-info btn-lg" (click)="openAddProductModal()">Add Product</button>
+        </div>
+        
+      </div>
+
+      <div class="row content">
+
+        <div *ngIf="errorMessage" class="alert alert-danger col-10" role="alert">
+            <h4 class="alert-heading">OOPS!</h4>
+            <p>Somthing went wrong.</p>
+            <hr>
+            <p class="mb-0">{{errorMessage}}</p>
+          </div>
+    
+          <div *ngIf="products?.length ==0" class="alert alert-success col-10" role="alert">
+            <h4 class="alert-heading">OOPS!</h4>
+            <p>There is no Products.</p>
+          </div>
+      </div>
+      
+
+    <div class="row content " >
+        
+
+
+        <div class="col-sm-3" *ngFor="let product of products; let i=index">
+            <div class="card shadow p-3 mb-5 bg-white rounded">
+                <img class="card-img-top img-fluid" [src]="product.imageUrl" alt="Card image cap"/>
+                <div class="card-body">
+                    <h4 class="card-title">{{product.title}}</h4>
+                    <p class="card-text">{{product.description}}</p>
+                    <p class="card-text">
+                        <small class="text-muted float-right">{{product.creationDate}}</small>
+                        <small class="text-muted float-left">${{product.price}}</small>
+                    </p>
+                </div>
+                <div class="card-link">
+                    <button  class="btn btn-info mt-auto float-left" (click)="openEditUserModal(i,product)"><i class="fa fa-edit"></i> Edit</button>
+                    <button class="btn btn-danger mt-auto float-right" *ngIf="!product.deleted" (click)="confirmBox(i,product.id)"><i class="fa fa-trash"></i> Delete</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+  
+</div>
+</div>

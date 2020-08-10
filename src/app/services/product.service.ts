@@ -81,6 +81,30 @@ export class ProductService {
     .pipe(catchError(this.errorHandl));
   }
 
+  getDeletedProducts(){
+    return this.httpClient.get(environment.productService+"/product/deleted").pipe(
+      catchError(this.errorHandl)
+    );
+  }
+
+  getNonDeletedProducts(){
+    return this.httpClient.get(environment.productService+"/product/nonDeleted").pipe(
+      catchError(this.errorHandl)
+    );
+  }
+
+  getPublishedProducts(){
+    return this.httpClient.get(environment.productService+"/product/published").pipe(
+      catchError(this.errorHandl)
+    );
+  }
+
+  getNonPublishedProducts(){
+    return this.httpClient.get(environment.productService+"/product/nonPublished").pipe(
+      catchError(this.errorHandl)
+    );
+  }
+
     // Error handling
     errorHandl(error) {
       let errorMessage = '';

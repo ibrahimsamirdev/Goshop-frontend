@@ -22,6 +22,7 @@ import { VendorEditProductComponent } from './vendor-edit-product/vendor-edit-pr
 import { CartItemsComponent } from './cart-items/cart-items.component';
 import { AuthGuardGuard } from './services/auth-guard.guard';
 import { RouterModule } from '@angular/router';
+import { AdminModule } from './admin/admin.module';
  
 
 
@@ -53,6 +54,7 @@ import { RouterModule } from '@angular/router';
     ReactiveFormsModule,
     MaterialModule,
     HttpClientModule,
+    AdminModule,
     RouterModule.forRoot([
       {path:'pormotion',loadChildren:()=>import('./pormotion/pormotion.module').then(m=>m.PormotionModule)}
       

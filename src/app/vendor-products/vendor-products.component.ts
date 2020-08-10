@@ -4,6 +4,7 @@ import { MatDialogConfig, MatDialog } from '@angular/material/dialog';
 import { VendorEditProductComponent } from '../vendor-edit-product/vendor-edit-product.component';
 import { ProductService } from '../services/product.service';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-vendor-products',
@@ -14,11 +15,13 @@ export class VendorProductsComponent implements OnInit {
 
   products;
   errorMessage;
-  constructor(public matDialog: MatDialog, private productService: ProductService) { }
+  productsType="allProducts";
+  constructor(public matDialog: MatDialog, private productService: ProductService
+    ,private userService: UserService) { }
 
   ngOnInit(): void {
 
-    let currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    let currentUser = this.userService.getCurrentUser();
     
     if(currentUser != null){
       let vendorId = currentUser.id;
@@ -28,8 +31,50 @@ export class VendorProductsComponent implements OnInit {
     }
   }
 
+  fetchProductsBy(event){
+    let value = event.target.value;
+    console.log(">>change products: ",value);
+    if(value != this.productsType){
+      this.productsType = value;
+      let vendorId = this.userService.getCurrentUser().id;
+      if(value == 'allProducts'){
+        this.getVendorProducts(vendorId);
+      }else if(value == 'published'){
+        this.getVendorPublishedProducts(vendorId);
+      }else{
+        this.getVendorNonPublishedProducts(vendorId);
+      }
+    }
+
+  }
   getVendorProducts(vendorId){
     this.productService.getVendorProducts(vendorId).subscribe(data => {
+      this.products = data;
+      if(this.products == null){
+        this.products =[];
+      }
+
+    },
+    (error) => {
+      this.errorMessage = error;
+    });
+  }
+
+  getVendorPublishedProducts(vendorId){
+    this.productService.getVendorPublishedProducts(vendorId).subscribe(data => {
+      this.products = data;
+      if(this.products == null){
+        this.products =[];
+      }
+
+    },
+    (error) => {
+      this.errorMessage = error;
+    });
+  }
+
+  getVendorNonPublishedProducts(vendorId){
+    this.productService.getVendorNonPublishedProducts(vendorId).subscribe(data => {
       this.products = data;
       if(this.products == null){
         this.products =[];
@@ -54,17 +99,18 @@ export class VendorProductsComponent implements OnInit {
     
     modalDialog.afterClosed().subscribe(result => {
       console.log('The dialog was closed', result);
+      if(this.productsType != 'published' )
       this.products.push(result.createdProduct);
     });
   }
 
-  openEditUserModal(index, user){
+  openEditUserModal(index, product){
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = false;
-    dialogConfig.id = "edituser-modal-component";
+    dialogConfig.id = "edit-product-modal-component";
     dialogConfig.maxHeight = "800px";
     dialogConfig.width = "600px";
-    dialogConfig.data = {user: user};
+    dialogConfig.data = {productToUpdate: product};
 
     const modalDialog = this.matDialog.open(VendorEditProductComponent, dialogConfig);
 

@@ -19,3 +19,11 @@
     max-height: 170px;
     min-height: 170px;
 }
+
+#filter{
+    display: flow-root;
+}
+
+.err-msg{
+    padding-top: 5%;
+}

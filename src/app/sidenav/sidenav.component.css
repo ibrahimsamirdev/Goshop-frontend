@@ -21,7 +21,17 @@
     background-color: #343a40;
 }
 
-.item:hover{
+/* .item:hover{
     background-color: #e2e9f1;
     color: white;
+} */
+
+.sub-li{
+    border: none;
 }
+
+#super-link{
+    color: #54b7ef;
+}
+
+

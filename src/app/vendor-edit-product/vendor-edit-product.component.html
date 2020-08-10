@@ -1,1 +1,71 @@
-<p>vendor-edit-product works!</p>
+<form [formGroup]= "productForm" (submit)="updateProduct()">
+
+    <div *ngIf="imageView" class="card shadow-lg p-3 mb-5 bg-white rounded w-50 mx-auto">
+      <img  class="img-responsive card-img" [src]="imageView">
+     </div>
+     <div class="custom-file mb-3">
+     
+        <input type="file" class="custom-file-input" (change)="uploadFile($event)" id="customFile" name="filename">
+        <label class="custom-file-label" for="customFile">Choose image</label>
+      </div>
+  
+      <div class="form-group">
+        <label for="title">title</label>
+        <input type="email" formControlName="title" class="form-control" id="title" 
+        [ngClass]="{'is-invalid':submitted && formControls.title.errors}" aria-describedby="emailHelp" placeholder="Enter title">
+        <small  class="text-danger" *ngIf="submitted && hasError('title', 'required')">
+          title is required.
+        </small>
+      </div>
+  
+      <div class="form-group">
+          <label for="description">Description</label>
+          <input type="text" formControlName ="description" class="form-control" id="description" 
+          [ngClass]="{'is-invalid':submitted && formControls.description.errors}" placeholder="Enter description">
+          <small  class="text-danger" *ngIf="submitted && hasError('description', 'required')">
+              description is required.
+          </small> 
+      </div>
+  
+        <div class="form-group">
+          <label for="price">Price</label>
+          <input type="number" formControlName="price" class="form-control " 
+           id="price" [ngClass]="{'is-invalid':submitted && formControls.price.errors}" placeholder="Enter Price">
+           <small  class="text-danger" *ngIf="submitted && hasError('price', 'required')">
+               price is required.
+           </small>    
+      </div>
+      <div class="form-group">
+        <label for="attributes">Attributes</label>
+        <input type="text" formControlName="attributes" class="form-control" id="attributes" placeholder="attributes"
+        [ngClass]="{'is-invalid': submitted && formControls.attributes.errors}">
+        <small  class="text-danger" *ngIf="submitted && hasError('attributes', 'required')">
+          Attributes is required.
+        </small>
+      </div>
+  
+      <div class="form-group">
+          <label for="stockAmount">Stock Amount</label>
+          <input type="number" formControlName="stockAmount" class="form-control" id="stockAmount" placeholder="stockAmount"
+          [ngClass]="{'is-invalid': submitted && formControls.stockAmount.errors}">
+          <small  class="text-danger" *ngIf="submitted && hasError('stockAmount', 'required')">
+              Stock Amount is required.
+          </small>
+        </div>
+  
+      
+      <div class="form-group" >
+          <label for="category">Category</label>
+          <select class="form-control" id="category" formControlName="category"
+          [ngClass]="{'is-invalid': submitted && formControls.category.errors}">
+            <option [ngValue]=null>select Category</option>
+            <option *ngFor="let category of categories" [ngValue] ="category.id">{{category.name}}</option>
+          </select>
+          <small  class="text-danger" *ngIf="submitted && hasError('category', 'required')">
+              category is required.
+          </small>
+      </div>
+    
+      <p *ngIf="errorMessage" class="err">{{errorMessage}}</p >
+      <button type="submit" class="btn btn-primary">Edit</button>
+    </form>

@@ -1,17 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { VendorAddProductComponent } from '../vendor-add-product/vendor-add-product.component';
-import { MatDialogConfig, MatDialog } from '@angular/material/dialog';
-import { VendorEditProductComponent } from '../vendor-edit-product/vendor-edit-product.component';
-import { ProductService } from '../services/product.service';
+import { UserService } from 'src/app/services/user.service';
+import { ProductService } from 'src/app/services/product.service';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { VendorEditProductComponent } from 'src/app/vendor-edit-product/vendor-edit-product.component';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
-import { UserService } from '../services/user.service';
+import { VendorAddProductComponent } from 'src/app/vendor-add-product/vendor-add-product.component';
 
 @Component({
-  selector: 'app-vendor-products',
-  templateUrl: './vendor-products.component.html',
-  styleUrls: ['./vendor-products.component.css']
+  selector: 'app-products',
+  templateUrl: './products.component.html',
+  styleUrls: ['./products.component.css']
 })
-export class VendorProductsComponent implements OnInit {
+export class ProductsComponent implements OnInit {
 
   products;
   errorMessage;
@@ -24,8 +24,8 @@ export class VendorProductsComponent implements OnInit {
     let currentUser = this.userService.getCurrentUser();
     
     if(currentUser != null){
-      let vendorId = currentUser.id;
-      this.getVendorProducts(vendorId);
+     
+      this.getNonDeletedProducts();
     }else{
       this.errorMessage= "please login first"
     }
@@ -36,19 +36,22 @@ export class VendorProductsComponent implements OnInit {
     console.log(">>change products: ",value);
     if(value != this.productsType){
       this.productsType = value;
-      let vendorId = this.userService.getCurrentUser().id;
+     
       if(value == 'allProducts'){
-        this.getVendorProducts(vendorId);
+        this.getNonDeletedProducts();
       }else if(value == 'published'){
-        this.getVendorPublishedProducts(vendorId);
-      }else{
-        this.getVendorNonPublishedProducts(vendorId);
+        this.getPublishedProducts();
+      }else if(value == 'nonPublished'){
+        this.getNonPublishedProducts();
+      }else if(value == 'deleted'){
+        this.getDeletedProducts();
       }
+
     }
 
   }
-  getVendorProducts(vendorId){
-    this.productService.getVendorProducts(vendorId).subscribe(data => {
+  getNonDeletedProducts(){
+    this.productService.getNonDeletedProducts().subscribe(data => {
       this.products = data;
       if(this.products == null){
         this.products =[];
@@ -60,8 +63,8 @@ export class VendorProductsComponent implements OnInit {
     });
   }
 
-  getVendorPublishedProducts(vendorId){
-    this.productService.getVendorPublishedProducts(vendorId).subscribe(data => {
+  getDeletedProducts(){
+    this.productService.getDeletedProducts().subscribe(data => {
       this.products = data;
       if(this.products == null){
         this.products =[];
@@ -73,8 +76,21 @@ export class VendorProductsComponent implements OnInit {
     });
   }
 
-  getVendorNonPublishedProducts(vendorId){
-    this.productService.getVendorNonPublishedProducts(vendorId).subscribe(data => {
+  getPublishedProducts(){
+    this.productService.getPublishedProducts().subscribe(data => {
+      this.products = data;
+      if(this.products == null){
+        this.products =[];
+      }
+
+    },
+    (error) => {
+      this.errorMessage = error;
+    });
+  }
+
+  getNonPublishedProducts(){
+    this.productService.getNonPublishedProducts().subscribe(data => {
       this.products = data;
       if(this.products == null){
         this.products =[];

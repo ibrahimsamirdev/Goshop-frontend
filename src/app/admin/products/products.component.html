@@ -1,7 +1,7 @@
 <!-- <app-header></app-header> -->
 <div class="row">
 <div class="col-2 ">
-    <app-sidenav></app-sidenav>
+    <app-admin-sidenav></app-admin-sidenav>
 </div>
 <div class="col-10 " data-spy="scroll"  >
 
@@ -11,7 +11,8 @@
             <select class="browser-default custom-select" (change)="fetchProductsBy($event)">
                 <option value="allProducts" selected>All Products</option>
                 <option value="published">Published</option>
-                <option value="notPublished">Not published</option>
+                <option value="nonPublished">Not published</option>
+                <option value="deleted">Deleted</option>
               </select>
         </div>
         <div class="float-right">
@@ -53,7 +54,7 @@
                 </div>
                 <div class="card-link">
                     <button  class="btn btn-info mt-auto float-left" (click)="openEditUserModal(i,product)"><i class="fa fa-edit"></i> Edit</button>
-                    <button class="btn btn-danger mt-auto float-right" (click)="confirmBox(i,product.id)"><i class="fa fa-trash"></i> Delete</button>
+                    <button class="btn btn-danger mt-auto float-right" *ngIf="!product.deleted" (click)="confirmBox(i,product.id)"><i class="fa fa-trash"></i> Delete</button>
                 </div>
             </div>
         </div>

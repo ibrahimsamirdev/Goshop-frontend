@@ -36,18 +36,30 @@
           <a class="nav-link cursor-pointer" >Products</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link cursor-pointer">Promotions</a>
+          <a class="nav-link cursor-pointer" mat-button [routerLink]="'/pormotion'"> pormotion </a>
         </li>
         <!-- <li class="nav-item">
           <a class="nav-link cursor-pointer">Disabled</a>
         </li> -->
       </ul>
-      <form class="form-inline my-2 my-lg-0">
+      <!-- <form class="form-inline my-2 my-lg-0">
         <input class="form-control mr-sm-2" type="search" placeholder="Search">
         <button type="button" class="btn btn-info"><i class="fa fa-search"></i></button>
       </form>
-
+       
+      </div> -->
      <div class="ml-auto">
+      <a id="shoping-icon"
+      class="my-2 my-sm-0"
+      [routerLink]="['/cart/cart-items']"
+    >
+      <i class="fa fa-shopping-cart">
+        <span class="mt-2">
+          {{ cartService.getLocalCartProducts().length }}55</span
+        >
+        <!-- 5</span> -->
+      </i>
+    </a>
         <button *ngIf="!isLoggedin()" routerLink="/login" class="btn btn-outline-info my-2 my-sm-0" type="submit">login</button> 
         <button *ngIf="isLoggedin()" (click)="logout()" class="btn btn-outline-info my-2 my-sm-0" type="submit">logout</button> 
       </div>

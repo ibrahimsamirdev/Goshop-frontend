@@ -7,9 +7,10 @@ import { environment } from 'src/environments/environment';
 })
 export class PormotionService {
 
-  getPormotionsURL: string =environment.productservice+'/promotion/';
-  addPormotionsURL: string =environment.productservice+'/promotion/';
-  upadtePormotionsURL: string =environment.productservice+'/promotion/';
+ 
+  addPormotionsURL: string =environment.productService+'/promotion/';
+  upadtePormotionsURL: string =environment.productService+'/promotion/';
+  getPormotionsURL: string =environment.productService+'/promotion/';
 
   constructor(private http: HttpClient) { }
   getAllPormotion() {

@@ -1,20 +1,21 @@
-.container{
+/* .container{
     padding-top: 5%;
-}
-
+} */
+/* 
 .row{
     padding-bottom: 1%;
-}
+} */
 
 /* .card{
     margin-right: 1% !important;
 } */
 
-/* #content{
-    overflow-y: scroll;
-} */
-/* .item{
-    margin:1rem;
-    padding-left: 1%;
-    padding-right: 1%;
-} */
+.content{
+    /* overflow-y: scroll; */
+    padding-top: 2%;
+}
+
+.img-fluid{
+    max-height: 170px;
+    min-height: 170px;
+}

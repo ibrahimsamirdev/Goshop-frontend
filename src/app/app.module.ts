@@ -23,6 +23,7 @@ import { CartItemsComponent } from './cart-items/cart-items.component';
 import { AuthGuardGuard } from './services/auth-guard.guard';
 import { RouterModule } from '@angular/router';
 import { AdminModule } from './admin/admin.module';
+import { CheckoutComponent } from './checkout/checkout.component';
  
 
 
@@ -43,7 +44,8 @@ import { AdminModule } from './admin/admin.module';
     VendorProductsComponent,
     VendorAddProductComponent,
     VendorEditProductComponent,
-    CartItemsComponent
+    CartItemsComponent,
+    CheckoutComponent
     
   ],
   imports: [

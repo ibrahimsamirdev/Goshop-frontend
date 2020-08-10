@@ -19,6 +19,7 @@ export class VendorAddUserComponent implements OnInit {
   errorMessage;
   submitted = false;
   createdUser;
+  isAdmin =false;
   constructor(private userService: UserService, private formBuilder: FormBuilder,
     public dialogRef: MatDialogRef<VendorAddUserComponent>) { }
 
@@ -34,8 +35,15 @@ export class VendorAddUserComponent implements OnInit {
     },{
       validator: ConfirmedValidator('pass', 'confirmPass')
     });
-    this.getVendorEmployeesRoles();
-    this.getAllVendors();
+    
+    let currentUser = this.userService.getCurrentUser();
+      if(currentUser.role.role =='admin'){
+        this.isAdmin =true;
+        this.getAllRoles();
+        this.getAllVendors();
+      }else{
+        this.getVendorEmployeesRoles();
+      }
   }
 
   public hasError = (controlName: string, errorName: string) =>{
@@ -50,6 +58,16 @@ export class VendorAddUserComponent implements OnInit {
 
   getVendorEmployeesRoles(){
     this.userService.getVendorEmployeesRoles().subscribe(data => {
+      this.roles = data;
+    }, 
+    (error)=>{
+      this.errorMessage = error;
+    });
+  }
+
+
+  getAllRoles(){
+    this.userService.getAllRoles().subscribe(data => {
       this.roles = data;
     }, 
     (error)=>{

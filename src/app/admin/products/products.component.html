@@ -53,8 +53,11 @@
                     </p>
                 </div>
                 <div class="card-link">
-                    <button  class="btn btn-info mt-auto float-left" (click)="openEditUserModal(i,product)"><i class="fa fa-edit"></i> Edit</button>
-                    <button class="btn btn-danger mt-auto float-right" *ngIf="!product.deleted" (click)="confirmBox(i,product.id)"><i class="fa fa-trash"></i> Delete</button>
+                    <button  class="btn btn-info mt-auto float-left" (click)="openEditUserModal(i,product)"><i class="fa fa-edit"></i> </button>
+                    <button class="btn btn-danger mt-auto float-left" id="delete-btn" *ngIf="!product.deleted" (click)="confirmBox(i,product.id)"><i class="fa fa-trash"></i> </button>
+
+                    <button class="btn btn-success mt-auto float-right" *ngIf="!product.published && !product.deleted" (click)="publish(i,product.id)"><i class="fa fa-badge-check"></i> Publish</button>
+                    <button class="btn btn-warning mt-auto float-right" *ngIf="product.published && !product.deleted" (click)="unPublish(i,product.id)"><i class="fa fa-badge-check"></i> UnPublish</button>
                 </div>
             </div>
         </div>

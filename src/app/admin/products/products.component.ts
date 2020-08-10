@@ -5,6 +5,7 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { VendorEditProductComponent } from 'src/app/vendor-edit-product/vendor-edit-product.component';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
 import { VendorAddProductComponent } from 'src/app/vendor-add-product/vendor-add-product.component';
+import { AdminService } from '../admin.service';
 
 @Component({
   selector: 'app-products',
@@ -17,7 +18,8 @@ export class ProductsComponent implements OnInit {
   errorMessage;
   productsType="allProducts";
   constructor(public matDialog: MatDialog, private productService: ProductService
-    ,private userService: UserService) { }
+    ,private userService: UserService,
+    private adminService: AdminService) { }
 
   ngOnInit(): void {
 
@@ -193,4 +195,25 @@ export class ProductsComponent implements OnInit {
     })
   }
 
+  publish(i,productId){
+
+     this.adminService.publishProduct(productId).subscribe(data => {
+        this.products[i].published = true;
+     },
+     (error) =>{
+       this.errorMessage = error;
+       this.showErrorMessage(error);
+     })
+  }
+
+  unPublish(i, productId){
+
+    this.adminService.publishProduct(productId).subscribe(data => {
+      this.products[i].published = false;
+   },
+   (error) =>{
+     this.errorMessage = error;
+     this.showErrorMessage(error);
+   })
+  }
 }

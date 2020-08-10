@@ -17,3 +17,11 @@
 .err-msg{
     padding-top: 5%;
 }
+
+#delete-btn{
+    margin-left: 2px;
+}
+
+.card{
+    min-height: 405px;
+}

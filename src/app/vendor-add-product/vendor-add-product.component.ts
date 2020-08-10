@@ -21,6 +21,8 @@ export class VendorAddProductComponent implements OnInit {
   uploadedText = 'Choose file';
   images;
   imageView;
+  vendors;
+  isAdmin = false;
 
   constructor(private productService: ProductService, private userService: UserService,
      private formBuilder: FormBuilder,
@@ -30,6 +32,12 @@ export class VendorAddProductComponent implements OnInit {
 
     this.createProductForm();
     this.getAllSubCategories();
+
+    let currentUser = this.userService.getCurrentUser();
+     if(currentUser.role.role =='admin'){
+      this.isAdmin =true;
+      this.getAllVendors();
+    }
 
   }
 
@@ -48,7 +56,8 @@ export class VendorAddProductComponent implements OnInit {
       price: new FormControl('', Validators.required),
       attributes: new FormControl('',Validators.required),
       stockAmount: new FormControl('', Validators.required),
-      category: new FormControl(null, Validators.required)
+      category: new FormControl(null, Validators.required),
+      vendorId: new FormControl(null)
     });
   }
 
@@ -60,15 +69,31 @@ export class VendorAddProductComponent implements OnInit {
     })
   }
 
+  getAllVendors(){
+    this.userService.getAllVendors().subscribe(data => {
+      this.vendors = data;
+    }, 
+    (error)=>{
+      this.errorMessage = error;
+    });
+  }
+
   addProduct(){
     let product = this.productForm.value;
     this.submitted = true;
     if(this.productForm.valid ){
-      product.vendorId = this.userService.getCurrentUser().id;
-      this.productService.createProduct(product, this.images[0]).subscribe(data => {
+      if(!this.isAdmin){
+        product.vendorId = this.userService.getCurrentUser().id;  
+      }
+      if(product.vendorId == null){
+        this.errorMessage = "Vendor is required";
+      }else{
+        this.productService.createProduct(product, this.images[0]).subscribe(data => {
           this.createdProduct = data;
           this.closeDialog(this.createdProduct);
       })
+      }
+    
     }
   }
 

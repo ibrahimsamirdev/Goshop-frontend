@@ -1,8 +1,8 @@
 <form [formGroup]="pormotionForm" (submit)="editPormotion()">
 
     <div class="form-group">
-        <label for="startDate1">start Date</label>
-        <input type="date" formControlName="startDate" class="form-control" id="startDate1" 
+        <label for="startDate">start Date</label>
+        <input type="date" formControlName="startDate" class="form-control" id="startDate" 
         [ngClass]="{'is-invalid':submitted && formControls.startDate.errors}" placeholder="Enter start Date">
           <small  class="text-danger" *ngIf="submitted  && hasError('startDate','required')">
             Start date is required.
@@ -10,8 +10,8 @@
       </div>
     
       <div class="form-group">
-        <label for="endDate1">end Date</label>
-        <input type="date" formControlName="endDate" class="form-control" id="endDate1" 
+        <label for="endDate">end Date</label>
+        <input type="date" formControlName="endDate" class="form-control" id="endDate" 
         [ngClass]="{'is-invalid':submitted && formControls.endDate.errors}" placeholder="Enter end Date">
           <small  class="text-danger" *ngIf="submitted  && hasError('endDate','required')">
             End date is required.

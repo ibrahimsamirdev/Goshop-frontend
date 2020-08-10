@@ -7,6 +7,9 @@ import { environment } from 'src/environments/environment';
 })
 export class PormotionService {
 
+ 
+  addPormotionsURL: string =environment.productService+'/promotion/';
+  upadtePormotionsURL: string =environment.productService+'/promotion/';
   getPormotionsURL: string =environment.productService+'/promotion/';
 
   constructor(private http: HttpClient) { }
@@ -14,11 +17,18 @@ export class PormotionService {
     return this.http.get<any>(this.getPormotionsURL);
   }
   
- 
+  updatePormotion(PormotionToUpdate: any) {
+    return this.http.put(this.upadtePormotionsURL+PormotionToUpdate.id,PormotionToUpdate);
 
+  }
+  deletePormotion(userId: any) {
+    return this.http.delete(this.upadtePormotionsURL+userId);
+
+  }
   createdPormotion(pormotion: any) {
-   // need link
-    return this.http.delete(environment.userManagement+"/api/user/", {responseType:'text' as 'json'});
+ 
+   return this.http.post(this.addPormotionsURL,pormotion);
+
   }
 
   

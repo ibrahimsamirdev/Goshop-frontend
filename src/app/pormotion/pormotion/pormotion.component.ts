@@ -18,7 +18,7 @@ export class PormotionComponent implements OnInit {
   pormotions;
   displayedColumns: string[] = ['title', 'startDate', 'endDate', 'discount'];
 
-  constructor(private pormationService: PormotionService,private userService: UserService  , public matDialog: MatDialog) { }
+  constructor(private pormationService: PormotionService, public matDialog: MatDialog) { }
   
 
   ngOnInit(): void {
@@ -28,6 +28,7 @@ export class PormotionComponent implements OnInit {
   
   getAllPormotion(){
     this.pormationService.getAllPormotion().subscribe(data => {
+      console.log(">>> pro: ",data)
       this.pormotions = data
         }
       ,
@@ -49,7 +50,7 @@ export class PormotionComponent implements OnInit {
     
     modalDialog.afterClosed().subscribe(result => {
       console.log('The dialog was closed', result);
-      this.pormotions.push(result.createdpormotion);
+      this.pormotions.push(result.createdPormotion);
     });
   }
   
@@ -79,7 +80,7 @@ export class PormotionComponent implements OnInit {
   }
   deletePormotion(index, userId){
     console.log('>>> delete user: ',userId);
-    this.userService.deleteUser(userId).subscribe(data =>{
+    this.pormationService.deletePormotion(userId).subscribe(data =>{
       this.pormotions.splice(index, 1);
       Swal.fire({
         title: 'Deleted!',
@@ -115,7 +116,7 @@ export class PormotionComponent implements OnInit {
     modalDialog.afterClosed().subscribe(result=>{
       console.log('The dialog was closed', result);
       if(result != null){
-        this.pormotions[index] = result.updatedUser;
+        this.pormotions[index] = result.updatedPormotion;
       }
       
     });

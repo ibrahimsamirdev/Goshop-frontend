@@ -1,0 +1,52 @@
+<div class="row">
+    <div class="col-2">
+        <app-admin-sidenav></app-admin-sidenav>
+    </div>
+    <div class="col-lg-10 ">
+    <div class="container">
+        <div class="row">
+          <button type="button" class="btn btn-info" (click)="openAddCategoryModal()">Add Category</button>
+        </div>
+        <div *ngIf="errorMessage" class="alert alert-danger" role="alert">
+            <h4 class="alert-heading">OOPS!</h4>
+            <p>Somthing went wrong.</p>
+            <hr>
+            <p class="mb-0">{{errorMessage}}</p>
+          </div>
+
+          
+      <div *ngIf="categories?.length ==0" class="alert alert-success" role="alert">
+        <h4 class="alert-heading">OOPS!</h4>
+        <p>There is no categorys.</p>
+      </div>
+     
+      <div class="row"> 
+      <table *ngIf="!errorMessage && categories?.length >0" class="table" >
+        <thead class="thead-dark">
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>isDeleted</th>
+                <th>partent Category</th>
+                <th>deleted</th>
+                <th>Edit</th>
+                <th>Delete</th>
+              </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let category of categories; let i =index ">
+                <td>{{category.name}}</td>
+                <td>{{category.description}}</td>
+                <td>{{category.isDeleted}}</td>
+                <td>{{category.partentCaregory}}</td>
+                <td>{{category.deleted}}</td>
+                <td><button type="button" class="btn btn-outline-info " (click)="openEditCategtoryModal(i, category)">Edit</button></td>
+                <td><button type="button" class="btn btn-outline-danger" (click)="confirmBox(i, category.id)">Delete</button></td>
+
+            </tr>
+        </tbody>
+      </table>
+
+  </div>
+  </div>
+</div>

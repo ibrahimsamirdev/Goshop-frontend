@@ -9,6 +9,7 @@ import { CartItemsComponent} from './cart-items/cart-items.component'
 import { AuthGuardGuard } from './services/auth-guard.guard';
 import { PormotionComponent } from './pormotion/pormotion/pormotion.component';
 import { ProductsComponent } from './admin/products/products.component';
+import { CategoryComponent } from './admin/category/category/category.component';
 
 
 const routes: Routes = [
@@ -20,7 +21,8 @@ const routes: Routes = [
   {path:"cart/cart-items", 
   component:CartItemsComponent,
   canActivate: [AuthGuardGuard]
-},
+}, 
+  {path: "category",component:CategoryComponent},
   {path: "pormotion", component:PormotionComponent},
   {path: "admin/products", component:ProductsComponent}
   

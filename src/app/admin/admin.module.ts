@@ -10,11 +10,11 @@ import { RouterModule } from '@angular/router';
 
 
 import { AdminSidenavComponent } from './admin-sidenav/admin-sidenav.component';
-import { HeaderComponent } from '../header/header.component';
+import { CategoryComponent } from './category/category/category.component';
 
 
 @NgModule({
-  declarations: [ProductsComponent, AdminSidenavComponent],
+  declarations: [ProductsComponent, AdminSidenavComponent, CategoryComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

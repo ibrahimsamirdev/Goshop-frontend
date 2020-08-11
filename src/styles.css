@@ -11,6 +11,7 @@ body {
 }
 
 .bs-callout {
+    font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial;
     padding: 20px;
     margin: 20px 0;
     border: 1px solid #eee;
@@ -19,6 +20,7 @@ body {
 }
 
 .bs-callout h4 {
+    font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial;
     margin-top: 0;
     margin-bottom: 5px;
     font-size: 22px;

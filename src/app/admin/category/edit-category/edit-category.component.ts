@@ -28,10 +28,10 @@ export class EditCategoryComponent implements OnInit {
   editCategory(){
     this.submitted=true;
     if(!this.CategoryToUpdate.invalid){
-      this.CategoryToUpdate.Name= this.categoryForm.value.Name;
-      this.CategoryToUpdate.Description= this.categoryForm.value.Description;
-     this.categoryService.updateCategory(this.CategoryToUpdate).subscribe(updatedPormotion => {
-        this.closeDialog(updatedPormotion);
+      this.CategoryToUpdate.name= this.categoryForm.value.name;
+      this.CategoryToUpdate.description= this.categoryForm.value.description;
+     this.categoryService.updateCategory(this.CategoryToUpdate).subscribe(updatedCategory => {
+        this.closeDialog(updatedCategory);
       },
       (error)=>{
         this.errorMessage = error;

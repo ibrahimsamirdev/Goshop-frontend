@@ -20,10 +20,11 @@ import { VendorProductsComponent } from './vendor-products/vendor-products.compo
 import { VendorAddProductComponent } from './vendor-add-product/vendor-add-product.component';
 import { VendorEditProductComponent } from './vendor-edit-product/vendor-edit-product.component';
 import { CartItemsComponent } from './cart-items/cart-items.component';
+import { ProductComponent } from './product/product.component';
 import { AuthGuardGuard } from './services/auth-guard.guard';
 import { RouterModule } from '@angular/router';
 import { AdminModule } from './admin/admin.module';
- 
+
 
 
 
@@ -43,8 +44,8 @@ import { AdminModule } from './admin/admin.module';
     VendorProductsComponent,
     VendorAddProductComponent,
     VendorEditProductComponent,
-    CartItemsComponent
-    
+    CartItemsComponent,
+    ProductComponent
   ],
   imports: [
     BrowserModule,
@@ -56,8 +57,8 @@ import { AdminModule } from './admin/admin.module';
     HttpClientModule,
     AdminModule,
     RouterModule.forRoot([
-      {path:'pormotion',loadChildren:()=>import('./pormotion/pormotion.module').then(m=>m.PormotionModule)}
-      
+      { path: 'pormotion', loadChildren: () => import('./pormotion/pormotion.module').then(m => m.PormotionModule) }
+
     ])
   ],
   providers: [AuthGuardGuard],

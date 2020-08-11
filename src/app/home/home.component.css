@@ -1,0 +1,16 @@
+.container.home {
+    padding-bottom: 52px;
+}
+
+.content {
+    padding-top: 30px;
+}
+
+.img-fluid {
+    max-height: 170px;
+    min-height: 170px;
+}
+
+.card {
+    min-height: 405px;
+}

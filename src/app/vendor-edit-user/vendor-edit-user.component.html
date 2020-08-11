@@ -41,6 +41,17 @@
         </small>
     </div>
 
+    <div *ngIf="needVendor" class="form-group" >
+      <label for="vendor">Vendor</label>
+      <select class="form-control" id="vendor"formControlName="vendor">
+        <option [ngValue]="0">select Vendor</option>
+        <option *ngFor="let v of vendors" [ngValue] ="v.id">{{v.email}}</option>
+      </select>
+      <!-- <small  class="text-danger" *ngIf="submitted && hasError('role', 'required')">
+        vendor is required.
+      </small> -->
+  </div>
+
     <p *ngIf="errorMessage" class="err">{{errorMessage}}</p >
     <button type="submit" class="btn btn-primary">Edit</button>
   </form>

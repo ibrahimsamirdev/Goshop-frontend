@@ -1,0 +1,68 @@
+<!-- <app-header></app-header> -->
+<div class="row">
+    <div class="col-2 ">
+       <app-admin-sidenav></app-admin-sidenav>
+   </div>
+   <div class="col-10 ">
+       <div class="container">
+    <div class=" row content "  id="filter"><!-- justify-content-center  align-items-center-->
+        <div class="float-left">
+            <select class="browser-default custom-select" (change)="fetchUsersBy($event)">
+                <option value="allUsers" selected>All Users</option>
+                <option value="active">Active</option>
+                <option value="notActive">Not Active</option>
+              </select>
+        </div>
+        <div class="float-right">
+            <button type="button" class="btn btn-info" (click)="openAddUserModal()">Add User</button>
+        </div>
+        
+      </div>
+       <!-- <div class="row">
+         <button type="button" class="btn btn-info" (click)="openAddUserModal()">Add Employee</button>
+       </div> -->
+   
+       <div *ngIf="errorMessage" class="alert alert-danger" role="alert">
+           <h4 class="alert-heading">OOPS!</h4>
+           <p>Somthing went wrong.</p>
+           <hr>
+           <p class="mb-0">{{errorMessage}}</p>
+         </div>
+   
+         <div *ngIf="users?.length ==0" class="alert alert-success" role="alert">
+           <h4 class="alert-heading">OOPS!</h4>
+           <p>There is no employees.</p>
+         </div>
+   
+       <table *ngIf="!errorMessage && users?.length >0" class="table table-fixed">
+        <!-- class="thead-dark"    -->
+        <thead >
+             <tr>
+               <th>Email</th>
+               <th>Name</th>
+               <th>mobile</th>
+               <th>Role</th>
+               <th>Edit</th>
+               <th>Delete</th>
+             </tr>
+           </thead>
+           <tbody>
+             <tr *ngFor="let user of users; let i = index">
+               <td>{{user.email}}</td>
+               <td>{{user.name}}</td>
+               <td>{{user.mobile}}</td>
+               <td>{{user.role?.role}}</td>
+               <td><button type="button" class="btn btn-outline-info" (click)= "openEditUserModal(i, user)">Edit</button></td>
+               <td>
+                <button type="button" class="btn btn-outline-success" *ngIf="user.deleted" (click)="confirmBox(i, user.id,'Activate')">Activate</button>
+                <button type="button" class="btn btn-outline-danger" *ngIf="!user.deleted" (click)="confirmBox(i, user.id, 'DeActivate')">DeActivate</button>
+              
+                </td>
+             </tr>
+             
+           </tbody>
+         </table>
+        
+        </div>
+   </div>
+   </div>

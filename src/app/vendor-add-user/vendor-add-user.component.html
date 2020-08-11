@@ -47,7 +47,7 @@
       </small>
     <div class="form-group" >
         <label for="role">Role</label>
-        <select class="form-control" id="role" formControlName="role"
+        <select class="form-control" id="role" formControlName="role"  (change)="changeRole($event)" 
         [ngClass]="{'is-invalid': submitted && formControls.role.errors}">
           <option [ngValue]=null>selectRole</option>
           <option *ngFor="let role of roles" [ngValue] ="role">{{role.role}}</option>
@@ -56,13 +56,16 @@
           role is required.
         </small>
     </div>
-    <!-- <div class="form-group" >
+    <div *ngIf="needVendor" class="form-group" >
         <label for="vendor">Vendor</label>
-        <select class="form-control" id="vendor" formControlName="vendor">
+        <select class="form-control" id="vendor"formControlName="vendor">
           <option [ngValue]="null">select Vendor</option>
-          <option *ngFor="let v of vendors" [ngValue] ="v">{{v.name}}</option>
+          <option *ngFor="let v of vendors" [ngValue] ="v">{{v.email}}</option>
         </select>
-    </div> -->
+        <!-- <small  class="text-danger" *ngIf="submitted && hasError('role', 'required')">
+          vendor is required.
+        </small> -->
+    </div>
     <p *ngIf="errorMessage" class="err">{{errorMessage}}</p >
     <button type="submit" class="btn btn-primary">Add</button>
   </form>

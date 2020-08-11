@@ -25,8 +25,11 @@ import { AuthGuardGuard } from './services/auth-guard.guard';
 import { RouterModule } from '@angular/router';
 import { AdminModule } from './admin/admin.module';
 
-
-
+import { CheckoutComponent } from './checkout/checkout.component';
+import { ShippingDetailsComponent } from './shipping-details/shipping-details.component';
+import { BillingDetailsComponent } from './billing-details/billing-details.component';
+import { ConfirmOrderComponent } from './confirm-order/confirm-order.component';
+import { PaymentMethodComponent } from './payment-method/payment-method.component';
 
 
 @NgModule({
@@ -45,7 +48,13 @@ import { AdminModule } from './admin/admin.module';
     VendorAddProductComponent,
     VendorEditProductComponent,
     CartItemsComponent,
-    ProductComponent
+    ProductComponent,
+    CheckoutComponent,
+    ShippingDetailsComponent,
+    BillingDetailsComponent,
+    ConfirmOrderComponent,
+    PaymentMethodComponent
+
   ],
   imports: [
     BrowserModule,

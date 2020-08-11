@@ -1,5 +1,10 @@
-<div class="col-10 container">
-    <div class="col-10 container">
+<div class="row">
+<div class="col-2 ">
+  <app-pormotion-sidenav></app-pormotion-sidenav>
+</div>
+
+    <div class="col-10">
+      <div class="container">
         <div class="row">
             <button type="button" class="btn btn-info" (click)= "openAddPormotionModal()">Add Pormotion</button> </div>
 
@@ -21,6 +26,8 @@
                     <th>start Date</th>
                     <th>end Date</th>
                     <th>discount</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -36,4 +43,5 @@
                 </tbody>
             </table>
     </div>
+  </div>
 </div>

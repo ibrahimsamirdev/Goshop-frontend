@@ -30,6 +30,34 @@ export class AdminService {
     );
   }
 
+  publishProduct(productId){
+    return this.httpClient.get(environment.productService+"/product/publish/"+productId).pipe(
+      catchError(this.errorHandl)
+    );
+  }
+
+  unPublishProduct(productId){
+    return this.httpClient.get(environment.productService+"/product/unPublish/"+productId).pipe(
+      catchError(this.errorHandl)
+    );
+  }
+  getAllEmployees(){
+    return this.httpClient.get(environment.userManagement+"/api/user").pipe(
+      catchError(this.errorHandl)
+    );
+  }
+
+  getActiveEmployees(){
+    return this.httpClient.get(environment.userManagement+"/api/user/active").pipe(
+      catchError(this.errorHandl)
+    );
+  }
+  getNonActiveEmployees(){
+    return this.httpClient.get(environment.userManagement+"/api/user/nonActive").pipe(
+      catchError(this.errorHandl)
+    );
+  }
+
     // Error handling
     errorHandl(error) {
       let errorMessage = '';

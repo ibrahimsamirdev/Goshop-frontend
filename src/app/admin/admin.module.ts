@@ -10,11 +10,16 @@ import { RouterModule } from '@angular/router';
 
 
 import { AdminSidenavComponent } from './admin-sidenav/admin-sidenav.component';
+
 import { HeaderComponent } from '../header/header.component';
+import { UsersComponent } from './users/users.component';
+import { CategoryComponent } from './category/category/category.component';
+import { AddCategoryComponent } from './category/add-category/add-category.component';
+import { EditCategoryComponent } from './category/edit-category/edit-category.component';
 
 
 @NgModule({
-  declarations: [ProductsComponent, AdminSidenavComponent],
+  declarations: [ProductsComponent, AdminSidenavComponent, UsersComponent, CategoryComponent, AddCategoryComponent, EditCategoryComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

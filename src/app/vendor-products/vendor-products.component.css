@@ -17,3 +17,7 @@
 .err-msg{
     padding-top: 5%;
 }
+
+.card{
+    min-height: 405px;
+}

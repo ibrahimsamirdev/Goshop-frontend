@@ -21,7 +21,7 @@ export class PaymentMethodComponent implements OnInit {
   ngOnInit(): void {
     this.paymentForm = this.formBuilder.group({
       cardNo: new FormControl('',Validators.required),
-      csv: new FormControl('',[Validators.required, Validators.email]),
+      csv: new FormControl('',[Validators.required]),
       expireDate: new FormControl('',Validators.required),
       nameOnCard: new FormControl('', Validators.required),
       type: new FormControl(null, Validators.required),

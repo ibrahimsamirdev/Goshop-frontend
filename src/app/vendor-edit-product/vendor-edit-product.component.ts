@@ -17,10 +17,12 @@ export class VendorEditProductComponent implements OnInit {
   submitted = false;
   updatedProduct;
   productToUpdate;
+  vendors;
 
   uploadedText = 'Choose file';
   images;
   imageView;
+  isAdmin=false;
 
   constructor(private productService: ProductService, private userService: UserService,
      private formBuilder: FormBuilder,
@@ -28,6 +30,11 @@ export class VendorEditProductComponent implements OnInit {
     @Optional() @Inject(MAT_DIALOG_DATA) public data: any) {
       this.productToUpdate = data.productToUpdate;
       this.createProductForm();
+      let currentUser = this.userService.getCurrentUser();
+      if(currentUser.role.role =='admin'){
+        this.isAdmin =true;
+        this.getAllVendors();
+      }
      }
 
   ngOnInit(): void {
@@ -53,7 +60,8 @@ export class VendorEditProductComponent implements OnInit {
       price: new FormControl(this.productToUpdate.price, Validators.required),
       attributes: new FormControl(this.productToUpdate.attributes,Validators.required),
       stockAmount: new FormControl(this.productToUpdate.stockAmount, Validators.required),
-      category: new FormControl(this.productToUpdate.category.id, Validators.required)
+      category: new FormControl(this.productToUpdate.category.id, Validators.required),
+      vendorId: new FormControl(this.productToUpdate.vendorId)
     });
 
   }
@@ -64,6 +72,14 @@ export class VendorEditProductComponent implements OnInit {
     }, (error)=>{
       this.errorMessage = error;
     })
+  }
+  getAllVendors(){
+    this.userService.getAllVendors().subscribe(data => {
+      this.vendors = data;
+    }, 
+    (error)=>{
+      this.errorMessage = error;
+    });
   }
 
   updateProduct(){
@@ -76,6 +92,7 @@ export class VendorEditProductComponent implements OnInit {
       this.productToUpdate.attributes = product.attributes;
       this.productToUpdate.stockAmount = product.stockAmount;
       this.productToUpdate.category.id = product.category;
+      this.productToUpdate.vendorId = product.vendorId;
       
       if(this.images != null){
         this.productService.updateProductWithImage(this.productToUpdate, this.images[0]).subscribe(data => {

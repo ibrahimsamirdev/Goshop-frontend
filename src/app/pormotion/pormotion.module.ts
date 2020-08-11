@@ -9,6 +9,7 @@ import { RouterModule } from '@angular/router';
 import { EditPormotionComponent } from './edit-pormotion/edit-pormotion.component';
 import { AddPormotionComponent } from './add-pormotion/add-pormotion.component';
 import { PormotionComponent } from './pormotion/pormotion.component';
+import { PormotionSidenavComponent } from './pormotion-sidenav/pormotion-sidenav.component';
 
 
 
@@ -17,7 +18,8 @@ import { PormotionComponent } from './pormotion/pormotion.component';
 @NgModule({
   declarations: [AddPormotionComponent,
      PormotionComponent,
-     EditPormotionComponent],
+     EditPormotionComponent,
+     PormotionSidenavComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

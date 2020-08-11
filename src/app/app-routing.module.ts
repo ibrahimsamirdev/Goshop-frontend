@@ -16,6 +16,7 @@ import { BillingDetailsComponent } from './billing-details/billing-details.compo
 import { ConfirmOrderComponent } from './confirm-order/confirm-order.component';
 import { UsersComponent } from './admin/users/users.component';
 import { CategoryComponent } from './admin/category/category/category.component';
+import { PaymentMethodComponent } from './payment-method/payment-method.component';
 
 
 
@@ -32,6 +33,7 @@ const routes: Routes = [
   {path: "pormotion", component:PormotionComponent},
   {path: "admin/products", component:ProductsComponent},
   {path:"checkouts",component:CheckoutComponent},
+  {path:"payment-method",component:PaymentMethodComponent},
   {path:"shipping-details",component:ShippingDetailsComponent},
   {path:"billing-details",component:BillingDetailsComponent},
   {path:"confirm-order",component:ConfirmOrderComponent},

@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
+import { throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -44,4 +47,36 @@ export class CartService {
 
     return products;
   }
+
+  getPaymentMethodByUserId(userId){
+    return this.httpClient.get(environment.userManagement+"/api/paymentmethod/user/"+userId).pipe(
+      catchError(this.errorHandl)
+    );
+    
+  }
+
+  addPaymentMethod(paymentMethod){
+    return this.httpClient.post(environment.userManagement+"/api/paymentmethod", paymentMethod).pipe(
+      catchError(this.errorHandl)
+    );
+  }
+
+   // Error handling
+   errorHandl(error) {
+    let errorMessage = '';
+    if(error.error instanceof ErrorEvent) {
+      // Get client-side error
+      errorMessage = error.error.message;
+    }else if(error.error instanceof ProgressEvent) {
+      // Get client-side error
+      errorMessage = error.message;
+    }  else {
+      // Get server-side error
+      errorMessage = error.error;
+      // `Error Code: ${error.status}\nMessage: ${error.message}`;
+    }
+    console.log('>>> erroe message: ',errorMessage);
+    console.log('>>> erroe : ',error);
+    return throwError(errorMessage);
+ }
 }

@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -24,6 +25,9 @@ import { AuthGuardGuard } from './services/auth-guard.guard';
 import { RouterModule } from '@angular/router';
 import { AdminModule } from './admin/admin.module';
 import { CheckoutComponent } from './checkout/checkout.component';
+import { ShippingDetailsComponent } from './shipping-details/shipping-details.component';
+import { BillingDetailsComponent } from './billing-details/billing-details.component';
+import { ConfirmOrderComponent } from './confirm-order/confirm-order.component';
  
 
 
@@ -45,7 +49,10 @@ import { CheckoutComponent } from './checkout/checkout.component';
     VendorAddProductComponent,
     VendorEditProductComponent,
     CartItemsComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    ShippingDetailsComponent,
+    BillingDetailsComponent,
+    ConfirmOrderComponent
     
   ],
   imports: [

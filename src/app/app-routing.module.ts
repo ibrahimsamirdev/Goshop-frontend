@@ -10,6 +10,8 @@ import { AuthGuardGuard } from './services/auth-guard.guard';
 import { PormotionComponent } from './pormotion/pormotion/pormotion.component';
 import { ProductsComponent } from './admin/products/products.component';
 import { CheckoutComponent } from './checkout/checkout.component';
+import { ShippingDetailsComponent } from './shipping-details/shipping-details.component';
+import { BillingDetailsComponent } from './billing-details/billing-details.component';
 
 
 const routes: Routes = [
@@ -23,7 +25,9 @@ const routes: Routes = [
 },
   {path: "pormotion", component:PormotionComponent},
   {path: "admin/products", component:ProductsComponent},
-  {path:"checkouts",component:CheckoutComponent}
+  {path:"checkouts",component:CheckoutComponent},
+  {path:"shipping-details",component:ShippingDetailsComponent},
+  {path:"billing-details",component:BillingDetailsComponent}
  
 ];
 

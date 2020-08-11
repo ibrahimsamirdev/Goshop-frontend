@@ -28,7 +28,6 @@
                 <th>Description</th>
                 <th>isDeleted</th>
                 <th>partent Category</th>
-                <th>deleted</th>
                 <th>Edit</th>
                 <th>Delete</th>
               </tr>
@@ -38,8 +37,7 @@
                 <td>{{category.name}}</td>
                 <td>{{category.description}}</td>
                 <td>{{category.isDeleted}}</td>
-                <td>{{category.partentCaregory}}</td>
-                <td>{{category.deleted}}</td>
+                <td>{{category.partentCaregory?.name}}</td>
                 <td><button type="button" class="btn btn-outline-info " (click)="openEditCategtoryModal(i, category)">Edit</button></td>
                 <td><button type="button" class="btn btn-outline-danger" (click)="confirmBox(i, category.id)">Delete</button></td>
 

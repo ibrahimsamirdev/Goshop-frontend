@@ -11,10 +11,12 @@ import { RouterModule } from '@angular/router';
 
 import { AdminSidenavComponent } from './admin-sidenav/admin-sidenav.component';
 import { CategoryComponent } from './category/category/category.component';
+import { AddCategoryComponent } from './category/add-category/add-category.component';
+import { EditCategoryComponent } from './category/edit-category/edit-category.component';
 
 
 @NgModule({
-  declarations: [ProductsComponent, AdminSidenavComponent, CategoryComponent],
+  declarations: [ProductsComponent, AdminSidenavComponent, CategoryComponent, AddCategoryComponent, EditCategoryComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

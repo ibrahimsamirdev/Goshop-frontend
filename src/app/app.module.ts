@@ -28,6 +28,7 @@ import { CheckoutComponent } from './checkout/checkout.component';
 import { ShippingDetailsComponent } from './shipping-details/shipping-details.component';
 import { BillingDetailsComponent } from './billing-details/billing-details.component';
 import { ConfirmOrderComponent } from './confirm-order/confirm-order.component';
+import { PaymentMethodComponent } from './payment-method/payment-method.component';
  
 
 
@@ -52,7 +53,8 @@ import { ConfirmOrderComponent } from './confirm-order/confirm-order.component';
     CheckoutComponent,
     ShippingDetailsComponent,
     BillingDetailsComponent,
-    ConfirmOrderComponent
+    ConfirmOrderComponent,
+    PaymentMethodComponent
     
   ],
   imports: [

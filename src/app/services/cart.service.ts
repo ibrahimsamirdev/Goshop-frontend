@@ -61,6 +61,19 @@ export class CartService {
     );
   }
 
+  getShippingAddressByUserId(userId){
+    return this.httpClient.get(environment.userManagement+"/api/address/user/shipping/"+userId).pipe(
+      catchError(this.errorHandl)
+    );
+    
+  }
+
+  addShippingAddress(shippingAddress){
+    return this.httpClient.post(environment.userManagement+"/api/address", shippingAddress).pipe(
+      catchError(this.errorHandl)
+    );
+  }
+
    // Error handling
    errorHandl(error) {
     let errorMessage = '';

@@ -1,6 +1,6 @@
 .board {
     margin: 60px auto;
-    height: 500px;
+    /* height: 500px; */
     background: #fff;
   }
 
@@ -99,5 +99,12 @@
     left: 0;
     text-align: center;
     font-size: 25px;
+  }
+  .err{
+    color: red;
+  }
+  #title{
+    font-size: x-large;
+    color: #007bff;
   }
   

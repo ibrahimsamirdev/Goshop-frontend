@@ -11,6 +11,7 @@ import { PormotionComponent } from './pormotion/pormotion/pormotion.component';
 import { ProductsComponent } from './admin/products/products.component';
 import { UsersComponent } from './admin/users/users.component';
 import { CategoryComponent } from './admin/category/category/category.component';
+import { VendorDashboardComponent } from './vendor-dashboard/vendor-dashboard.component';
 
 
 const routes: Routes = [
@@ -26,7 +27,8 @@ const routes: Routes = [
   {path: "category",component:CategoryComponent},
   {path: "pormotion", component:PormotionComponent},
   {path: "admin/products", component:ProductsComponent},
-  {path: "admin/users", component:UsersComponent}
+  {path: "admin/users", component:UsersComponent},
+  {path:"vendor/dashboard", component:VendorDashboardComponent}
   
 ];
 

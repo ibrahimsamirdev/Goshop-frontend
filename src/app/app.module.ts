@@ -23,7 +23,9 @@ import { CartItemsComponent } from './cart-items/cart-items.component';
 import { AuthGuardGuard } from './services/auth-guard.guard';
 import { RouterModule } from '@angular/router';
 import { AdminModule } from './admin/admin.module';
- 
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { VendorDashboardComponent } from './vendor-dashboard/vendor-dashboard.component';
+import { ChartsModule } from 'ng2-charts';
 
 
 
@@ -43,7 +45,9 @@ import { AdminModule } from './admin/admin.module';
     VendorProductsComponent,
     VendorAddProductComponent,
     VendorEditProductComponent,
-    CartItemsComponent
+    CartItemsComponent,
+    DashboardComponent,
+    VendorDashboardComponent
     
   ],
   imports: [
@@ -52,6 +56,7 @@ import { AdminModule } from './admin/admin.module';
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
+    ChartsModule,
     MaterialModule,
     HttpClientModule,
     AdminModule,

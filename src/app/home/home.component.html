@@ -1,2 +1,20 @@
-<!-- <app-header></app-header> -->
-<p>home works!</p>
+<div class="container home">
+    <div class="bs-callout bs-callout-primary">
+        <h4>Our Latest Products</h4>
+    </div>
+    <div class="row">
+        <div class="col-sm-3" *ngFor="let product of products; let i=index">
+            <div class="card shadow p-3 mb-5 bg-white rounded">
+                <img class="card-img-top img-fluid" [src]="product.imageUrl" alt="Card image cap" />
+                <div class="card-body">
+                    <h4 class="card-title">{{product.title}}</h4>
+                    <p class="card-text">{{product.description}}</p>
+                    <h2 class="price">${{product.price}}</h2>
+                </div>
+                <div class="card-link">
+                    <button class="btn btn-primary mt-auto float-left"><i class="fa fa-eye"></i> View</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

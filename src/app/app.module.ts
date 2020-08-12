@@ -20,6 +20,7 @@ import { VendorProductsComponent } from './vendor-products/vendor-products.compo
 import { VendorAddProductComponent } from './vendor-add-product/vendor-add-product.component';
 import { VendorEditProductComponent } from './vendor-edit-product/vendor-edit-product.component';
 import { CartItemsComponent } from './cart-items/cart-items.component';
+import { ProductComponent } from './product/product.component';
 import { AuthGuardGuard } from './services/auth-guard.guard';
 import { RouterModule } from '@angular/router';
 import { AdminModule } from './admin/admin.module';
@@ -28,6 +29,11 @@ import { VendorDashboardComponent } from './vendor-dashboard/vendor-dashboard.co
 import { ChartsModule } from 'ng2-charts';
 
 
+import { CheckoutComponent } from './checkout/checkout.component';
+import { ShippingDetailsComponent } from './shipping-details/shipping-details.component';
+import { BillingDetailsComponent } from './billing-details/billing-details.component';
+import { ConfirmOrderComponent } from './confirm-order/confirm-order.component';
+import { PaymentMethodComponent } from './payment-method/payment-method.component';
 
 
 @NgModule({
@@ -47,8 +53,15 @@ import { ChartsModule } from 'ng2-charts';
     VendorEditProductComponent,
     CartItemsComponent,
     DashboardComponent,
-    VendorDashboardComponent
+    VendorDashboardComponent,
     
+    ProductComponent,
+    CheckoutComponent,
+    ShippingDetailsComponent,
+    BillingDetailsComponent,
+    ConfirmOrderComponent,
+    PaymentMethodComponent
+
   ],
   imports: [
     BrowserModule,
@@ -61,8 +74,8 @@ import { ChartsModule } from 'ng2-charts';
     HttpClientModule,
     AdminModule,
     RouterModule.forRoot([
-      {path:'pormotion',loadChildren:()=>import('./pormotion/pormotion.module').then(m=>m.PormotionModule)}
-      
+      { path: 'pormotion', loadChildren: () => import('./pormotion/pormotion.module').then(m => m.PormotionModule) }
+
     ])
   ],
   providers: [AuthGuardGuard],

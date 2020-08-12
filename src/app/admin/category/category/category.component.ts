@@ -63,7 +63,30 @@ export class CategoryComponent implements OnInit {
       
     });
   }
+  ActiveConfirmBox(index,categoryId){
+    Swal.fire({
+      title: 'Are you sure want to Active?',
+      text: 'You will be able to recover this file!',
+      icon: 'success',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, Active it!',
+      cancelButtonText: 'No, keep it'
+    }).then((result) => {
+      if (result.value) {
+        this.ActiveCategory(index, categoryId);
 
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        Swal.fire({
+          title: 'Activeled',
+          text:'Your category is safe :)',
+          icon: 'success',
+          showConfirmButton: false,
+          timer: 1500
+        }
+        )
+      }
+    })   
+  }
   confirmBox(index,categoryId ){
     Swal.fire({
       title: 'Are you sure want to remove?',
@@ -88,10 +111,35 @@ export class CategoryComponent implements OnInit {
       }
     })   
   }
+  ActiveCategory(index: any, categoryId: any){
+    console.log('>>> Active category: ',categoryId);
+    this.categoryService.activeCategory(categoryId).subscribe(data =>{
+      // this.categories.splice(index, 1);
+      this.categories[index].isDeleted = false;
+      Swal.fire({
+        title: 'Activeled!',
+        text:'Your category has been Activeled.',
+        icon: 'success',
+        showConfirmButton: false,
+        timer: 1500
+      }
+      )
+    },
+    (error) => {
+      Swal.fire({
+        title: 'Somthing went wrong',
+        text:error,
+        icon: 'error'
+      }
+      )
+      this.errorMessage = error;
+    })
+  }
   deleteCategory(index: any, categoryId: any) {
-    console.log('>>> delete user: ',categoryId);
+    console.log('>>> delete category: ',categoryId);
     this.categoryService.deleteCategory(categoryId).subscribe(data =>{
-      this.categories.splice(index, 1);
+      // this.categories.splice(index, 1);
+      this.categories[index].isDeleted = true;
       Swal.fire({
         title: 'Deleted!',
         text:'Your category has been deleted.',

@@ -1,0 +1,37 @@
+.container.home {
+    padding-bottom: 52px;
+    font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+.content {
+    padding-top: 30px;
+}
+
+.img-fluid {
+    max-height: 170px;
+    min-height: 170px;
+    /* object-fit: cover; */
+}
+
+.card {
+    min-height: auto;
+}
+
+.card-body {
+    padding: 1.25rem 0;
+}
+
+.card-body h4 {
+    font-size: 17px;
+    color: #0091f6;
+}
+
+.card-body .price {
+    margin: 0;
+}
+
+.card-body .card-text {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

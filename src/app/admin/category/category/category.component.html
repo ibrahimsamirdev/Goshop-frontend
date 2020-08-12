@@ -26,7 +26,7 @@
             <tr>
                 <th>Name</th>
                 <th>Description</th>
-                <th>isDeleted</th>
+                <!-- <th>isDeleted</th> -->
                 <th>partent Category</th>
                 <th>Edit</th>
                 <th>Delete</th>
@@ -36,10 +36,11 @@
             <tr *ngFor="let category of categories; let i =index ">
                 <td>{{category.name}}</td>
                 <td>{{category.description}}</td>
-                <td>{{category.isDeleted}}</td>
+                <!-- <td>{{category.isDeleted}}</td> -->
                 <td>{{category.partentCaregory?.name}}</td>
                 <td><button type="button" class="btn btn-outline-info " (click)="openEditCategtoryModal(i, category)">Edit</button></td>
-                <td><button type="button" class="btn btn-outline-danger" (click)="confirmBox(i, category.id)">Delete</button></td>
+                <td  *ngIf="!category.isDeleted"><button type="button" class="btn btn-outline-danger" (click)="confirmBox(i, category.id)">De-Active</button></td>
+                <td  *ngIf="category.isDeleted"><button type="button" class="btn btn-outline-success" (click)="ActiveConfirmBox(i, category.id)">Active</button></td>
 
             </tr>
         </tbody>

@@ -1,0 +1,77 @@
+<p>checkout works!</p>
+<section>
+    <div class="container">
+      <div class="board">
+        <!-- Navigation Area (Circular Tabs) -->
+        <h1 class="text-center">Checking Out Products</h1>
+
+        <div class="board-inner" id="status-buttons">
+          <ul class="nav nav-tabs" id="myTab">
+            <div class="liner"></div>
+        
+            <!-- circular user icon -->
+            <li id="productsTab" style="margin: auto;">
+              <a
+                [routerLink]="['/checkouts', { outlets: { checkOutlet: ['/'] } }]"
+                routerLinkActive="active"
+                [routerLinkActiveOptions]="{ exact: true }"
+                data-toggle="tab"
+                title="Product Summary"
+              >
+                <span class="round-tabs one">
+                  <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                </span>
+              </a>
+            </li>
+        
+          </ul>
+          <div class="clearfix"></div>
+        </div>
+        <!-- End Navigation Area (Circular Tabs) -->
+  
+        <!-- Content Area -->
+        <div class="tab-content">
+            <div class="container">
+                <ul class="list-group mb-3">
+                  <li
+                    class="list-group-item d-flex justify-content-between lh-condensed"
+                    
+                  >
+                  <!-- *ngFor="let product of checkoutProducts" -->
+                    <div>
+                      <img
+                        src="https://images.spot.im/v1/production/ayv6wjohiqkhkikty1nj"
+                        width="150"
+                        height="100"
+                      />
+                    </div>
+                    <div style="padding: 10px;">
+                      <h6 class="my-0">HP Laptop</h6>
+                      <p>Product Seller : Emad Shehata</p>
+                    </div>
+                    <span class="text-muted">$ 2000</span>
+                  </li>
+                  <hr />
+                  <li class="list-group-item d-flex justify-content-between">
+                    <span>Total (Dollar)</span>
+                    <strong>$ 2000</strong>
+                  </li>
+                </ul>
+                <div class="float-right">
+                  <a
+                    class="btn btn-default"
+                    [routerLink]="['/shipping-details']"
+                    routerLinkActive="active"
+                    >Next</a
+                  >
+                </div>
+              </div>
+              
+        </div>
+        <!-- End Content Area -->
+      </div>
+  
+      <!-- For Debugging: show our formData as it is being typed -->
+      <!-- <pre>{{ formData | json }}</pre> -->
+    </div>
+  </section>

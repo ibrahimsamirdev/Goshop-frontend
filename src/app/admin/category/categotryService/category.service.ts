@@ -9,11 +9,11 @@ import { catchError } from 'rxjs/operators';
 })
 export class CategoryService {
 
- 
   private getCategoriesURL: string =environment.productService+'/category/';
   private getParentCategoriesURL: string =environment.productService+'/category/parentCategories';
   private postCategoriesURL: string =environment.productService+'/category/';
   private deleteCategoriesURL: string =environment.productService+'/category/';
+  private activeCategoriesURL: string =environment.productService+'/category/active/';
   private updateCategoriesURL: string =environment.productService+'/category/';
 
   constructor(private http:HttpClient) { }
@@ -31,7 +31,10 @@ export class CategoryService {
   deleteCategory(categoryId: any) {
     return  this.http.delete(this.deleteCategoriesURL+categoryId).pipe( catchError(this.errorHandl))
   }
-
+  activeCategory(categoryId: any) {
+    return  this.http.delete(this.activeCategoriesURL+categoryId).pipe( catchError(this.errorHandl))
+  
+  }
   updateCategory(categotry: any ){
     return this.http.put(this.updateCategoriesURL+categotry.id,categotry);
     

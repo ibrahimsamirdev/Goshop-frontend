@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -21,17 +20,20 @@ import { VendorProductsComponent } from './vendor-products/vendor-products.compo
 import { VendorAddProductComponent } from './vendor-add-product/vendor-add-product.component';
 import { VendorEditProductComponent } from './vendor-edit-product/vendor-edit-product.component';
 import { CartItemsComponent } from './cart-items/cart-items.component';
+import { ProductComponent } from './product/product.component';
 import { AuthGuardGuard } from './services/auth-guard.guard';
 import { RouterModule } from '@angular/router';
 import { AdminModule } from './admin/admin.module';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { VendorDashboardComponent } from './vendor-dashboard/vendor-dashboard.component';
+import { ChartsModule } from 'ng2-charts';
+
+
 import { CheckoutComponent } from './checkout/checkout.component';
 import { ShippingDetailsComponent } from './shipping-details/shipping-details.component';
 import { BillingDetailsComponent } from './billing-details/billing-details.component';
 import { ConfirmOrderComponent } from './confirm-order/confirm-order.component';
 import { PaymentMethodComponent } from './payment-method/payment-method.component';
- 
-
-
 
 
 @NgModule({
@@ -50,12 +52,16 @@ import { PaymentMethodComponent } from './payment-method/payment-method.componen
     VendorAddProductComponent,
     VendorEditProductComponent,
     CartItemsComponent,
+    DashboardComponent,
+    VendorDashboardComponent,
+    
+    ProductComponent,
     CheckoutComponent,
     ShippingDetailsComponent,
     BillingDetailsComponent,
     ConfirmOrderComponent,
     PaymentMethodComponent
-    
+
   ],
   imports: [
     BrowserModule,
@@ -63,12 +69,13 @@ import { PaymentMethodComponent } from './payment-method/payment-method.componen
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
+    ChartsModule,
     MaterialModule,
     HttpClientModule,
     AdminModule,
     RouterModule.forRoot([
-      {path:'pormotion',loadChildren:()=>import('./pormotion/pormotion.module').then(m=>m.PormotionModule)}
-      
+      { path: 'pormotion', loadChildren: () => import('./pormotion/pormotion.module').then(m => m.PormotionModule) }
+
     ])
   ],
   providers: [AuthGuardGuard],

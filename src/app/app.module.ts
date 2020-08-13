@@ -82,6 +82,7 @@ import { OrderHistoryDetailsComponent } from './order-history-details/order-hist
 
     ])
   ],
+ 
   providers: [AuthGuardGuard],
   bootstrap: [AppComponent]
 })

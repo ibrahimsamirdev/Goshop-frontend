@@ -5,7 +5,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { VendorEmployeesComponent } from './vendor-employees/vendor-employees.component';
 import { VendorProductsComponent } from './vendor-products/vendor-products.component';
-import { CartItemsComponent} from './cart-items/cart-items.component'
+import { CartItemsComponent } from './cart-items/cart-items.component'
 import { AuthGuardGuard } from './services/auth-guard.guard';
 import { PormotionComponent } from './pormotion/pormotion/pormotion.component';
 import { ProductsComponent } from './admin/products/products.component';
@@ -20,6 +20,7 @@ import { VendorDashboardComponent } from './vendor-dashboard/vendor-dashboard.co
 import { PaymentMethodComponent } from './payment-method/payment-method.component';
 import { OrderHistoryComponent } from './order-history/order-history.component';
 import { OrderHistoryDetailsComponent } from './order-history-details/order-history-details.component';
+import { ProductComponent } from './product/product.component';
 
 
 
@@ -45,7 +46,30 @@ const routes: Routes = [
   {path: "category",component:CategoryComponent},
   {path: "admin/users", component:UsersComponent},
   {path: "orders", component:OrderHistoryComponent},
-  { path: 'orderDetails', component: OrderHistoryDetailsComponent }
+  { path: 'orderDetails', component: OrderHistoryDetailsComponent },
+  
+  { path: "login", component: LoginComponent },
+  { path: "register", component: RegisterComponent },
+  { path: "vendor/employees", component: VendorEmployeesComponent },
+  { path: "vendor/products", component: VendorProductsComponent },
+
+  {
+    path: "cart/cart-items", component: CartItemsComponent
+    // , canActivate: [AuthGuardGuard]
+  },
+  { path: "pormotion", component: PormotionComponent },
+  { path: "admin/products", component: ProductsComponent },
+  { path: "vendor/dashboard", component: VendorDashboardComponent },
+
+  { path: "checkouts", component: CheckoutComponent },
+  { path: "payment-method", component: PaymentMethodComponent },
+  { path: "shipping-details", component: ShippingDetailsComponent },
+  { path: "billing-details", component: BillingDetailsComponent },
+  { path: "confirm-order", component: ConfirmOrderComponent },
+  { path: "category", component: CategoryComponent },
+  { path: "admin/users", component: UsersComponent },
+
+  { path: "product/:id", component: ProductComponent }
 ];
 
 @NgModule({

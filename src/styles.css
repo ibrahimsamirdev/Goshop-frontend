@@ -10,6 +10,15 @@ body {
     font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
+.page {
+    font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    padding-bottom: 52px;
+}
+
+.page p {
+    font-size: 15px;
+}
+
 .bs-callout {
     font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial;
     padding: 20px;

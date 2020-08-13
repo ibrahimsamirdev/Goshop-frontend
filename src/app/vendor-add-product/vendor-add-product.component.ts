@@ -23,9 +23,10 @@ export class VendorAddProductComponent implements OnInit {
   imageView;
   vendors;
   isAdmin = false;
+  promotions;
 
   constructor(private productService: ProductService, private userService: UserService,
-     private formBuilder: FormBuilder,
+    private formBuilder: FormBuilder,
     public dialogRef: MatDialogRef<VendorAddUserComponent>) { }
 
   ngOnInit(): void {
@@ -34,66 +35,66 @@ export class VendorAddProductComponent implements OnInit {
     this.getAllSubCategories();
 
     let currentUser = this.userService.getCurrentUser();
-     if(currentUser.role.role =='admin'){
-      this.isAdmin =true;
+    if (currentUser.role.role == 'admin') {
+      this.isAdmin = true;
       this.getAllVendors();
     }
 
   }
 
-  public hasError = (controlName: string, errorName: string) =>{
+  public hasError = (controlName: string, errorName: string) => {
     return this.productForm.controls[controlName].hasError(errorName);
   }
 
-  public get formControls(){
+  public get formControls() {
     return this.productForm.controls;
   }
 
-  createProductForm(){
+  createProductForm() {
     this.productForm = this.formBuilder.group({
-      title: new FormControl('',Validators.required),
-      description: new FormControl('',[Validators.required]),
+      title: new FormControl('', Validators.required),
+      description: new FormControl('', [Validators.required]),
       price: new FormControl('', Validators.required),
-      attributes: new FormControl('',Validators.required),
+      attributes: new FormControl('', Validators.required),
       stockAmount: new FormControl('', Validators.required),
       category: new FormControl(null, Validators.required),
       vendorId: new FormControl(null)
     });
   }
 
-  getAllSubCategories(){
-    this.productService.getSubCategories().subscribe(data =>{
+  getAllSubCategories() {
+    this.productService.getSubCategories().subscribe(data => {
       this.categories = data;
-    }, (error)=>{
+    }, (error) => {
       this.errorMessage = error;
     })
   }
 
-  getAllVendors(){
+  getAllVendors() {
     this.userService.getAllVendors().subscribe(data => {
       this.vendors = data;
-    }, 
-    (error)=>{
-      this.errorMessage = error;
-    });
+    },
+      (error) => {
+        this.errorMessage = error;
+      });
   }
 
-  addProduct(){
+  addProduct() {
     let product = this.productForm.value;
     this.submitted = true;
-    if(this.productForm.valid ){
-      if(!this.isAdmin){
-        product.vendorId = this.userService.getCurrentUser().id;  
+    if (this.productForm.valid) {
+      if (!this.isAdmin) {
+        product.vendorId = this.userService.getCurrentUser().id;
       }
-      if(product.vendorId == null){
+      if (product.vendorId == null) {
         this.errorMessage = "Vendor is required";
-      }else{
+      } else {
         this.productService.createProduct(product, this.images[0]).subscribe(data => {
           this.createdProduct = data;
           this.closeDialog(this.createdProduct);
-      })
+        })
       }
-    
+
     }
   }
 
@@ -112,5 +113,11 @@ export class VendorAddProductComponent implements OnInit {
     const reader = new FileReader();
     reader.onload = e => this.imageView = reader.result;
     reader.readAsDataURL(this.images[0]);
+  }
+
+  getAllValidPromotions(vendorId){
+    this.productService.getValidPromotions(vendorId).subscribe(data => {
+      this.promotions = data;
+    });
   }
 }

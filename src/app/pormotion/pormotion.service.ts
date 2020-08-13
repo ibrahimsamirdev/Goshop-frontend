@@ -31,5 +31,17 @@ export class PormotionService {
 
   }
 
+  getVendorPormotion(vendorId){
+    return this.http.get(environment.productService+'/promotion/vendor/'+vendorId);
+  }
+
+  getDeletedPormotion(){
+    return this.http.get(environment.productService+'/promotion/deleted');
+  }
+
+  getNonDeletedPormotion(){
+    return this.http.get(environment.productService+'/promotion/nonDeleted');
+  }
+
   
 }

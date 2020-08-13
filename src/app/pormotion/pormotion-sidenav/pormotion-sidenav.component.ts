@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-pormotion-sidenav',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PormotionSidenavComponent implements OnInit {
 
-  constructor() { }
+  isAdmin = false;
+  constructor(private userService: UserService) { }
 
   ngOnInit(): void {
+
+    let currentUser = this.userService.getCurrentUser();
+     if(currentUser.role.role =='admin'){
+      this.isAdmin =true;
+    }
   }
 
 }

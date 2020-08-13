@@ -35,7 +35,7 @@ const routes: Routes = [
   },
   { path: "pormotion", component: PormotionComponent },
   { path: "admin/products", component: ProductsComponent },
-  { path: "vendor/dashboard", component: VendorDashboardComponent },
+  { path: "dashboard", component: VendorDashboardComponent },
 
   { path: "checkouts", component: CheckoutComponent },
   { path: "payment-method", component: PaymentMethodComponent },

@@ -16,10 +16,11 @@ import { UsersComponent } from './users/users.component';
 import { CategoryComponent } from './category/category/category.component';
 import { AddCategoryComponent } from './category/add-category/add-category.component';
 import { EditCategoryComponent } from './category/edit-category/edit-category.component';
+import { DashbaordComponent } from './dashbaord/dashbaord.component';
 
 
 @NgModule({
-  declarations: [ProductsComponent, AdminSidenavComponent, UsersComponent, CategoryComponent, AddCategoryComponent, EditCategoryComponent],
+  declarations: [ProductsComponent, AdminSidenavComponent, UsersComponent, CategoryComponent, AddCategoryComponent, EditCategoryComponent, DashbaordComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from '../services/cart.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -8,7 +9,7 @@ import { CartService } from '../services/cart.service';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor( public cartService:CartService) { 
+  constructor( public cartService:CartService, private router: Router) { 
    
   }
 
@@ -16,7 +17,12 @@ export class HeaderComponent implements OnInit {
   }
 
   logout(){
+    localStorage.removeItem('avct_item');
+    localStorage.removeItem('shippingAddressId');
+    localStorage.removeItem('paymentId');
     localStorage.removeItem('token');
+    this.router.navigate(['']);
+
   }
 
   isLoggedin(){

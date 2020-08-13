@@ -38,6 +38,8 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['admin/users']);
         }else if(this.loggedUser.user.role.role != 'registeredUser'){
         this.router.navigate(['vendor/employees']);
+        }else{
+          this.router.navigate(['/']);
         }
       },
       (error) => {

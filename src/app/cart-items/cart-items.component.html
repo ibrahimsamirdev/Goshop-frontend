@@ -18,7 +18,7 @@
                         </p>
                     </div>
                     <div class="card-link">
-                        <button class="btn btn-info mt-auto float-left"><i class="fa fa-eye"></i> View</button>
+                        <button (click)="view(product.id)" class="btn btn-info mt-auto float-left"><i class="fa fa-eye"></i> View</button>
                         <button class="btn btn-danger mt-auto float-right" (click)="confirmBox(i,product.id)"><i class="fa fa-trash"></i> Remove</button>
                     </div>
                 </div>

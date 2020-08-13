@@ -38,7 +38,7 @@
 
   <div *ngIf="isAdmin" class="form-group" >
     <label for="vendor">Vendor</label>
-    <select class="form-control" id="vendor"formControlName="vendorId">
+    <select class="form-control" id="vendor" formControlName="vendorId">
       <option [ngValue]="0">select Vendor</option>
       <option *ngFor="let v of vendors" [ngValue] ="v.id">{{v.email}}</option>
     </select>

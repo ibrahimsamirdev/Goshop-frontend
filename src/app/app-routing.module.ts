@@ -62,6 +62,7 @@ const routes: Routes = [
   { path: "dashboard", component: VendorDashboardComponent },
 
   { path: "checkouts", component: CheckoutComponent },
+  // , canActivate: [AuthGuardGuard]
   { path: "payment-method", component: PaymentMethodComponent },
   { path: "shipping-details", component: ShippingDetailsComponent },
   { path: "billing-details", component: BillingDetailsComponent },

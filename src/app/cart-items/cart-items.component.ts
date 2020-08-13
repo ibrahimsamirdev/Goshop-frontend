@@ -30,6 +30,9 @@ export class CartItemsComponent implements OnInit {
     });
   }
 
+  view(id){
+    this.router.navigate(['product/'+id]);
+  }
   confirmBox(index, productId){
     Swal.fire({
       title: 'Are you sure want to remove?',

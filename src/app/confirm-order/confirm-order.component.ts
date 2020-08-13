@@ -49,6 +49,10 @@ export class ConfirmOrderComponent implements OnInit {
      console.log(">>>>>>>>>>> order object", this.order);
      this.cartService.confirmOrder(this.order).subscribe( data =>{
       console.log("after Confirm");
+      localStorage.removeItem('avct_item');
+      localStorage.removeItem('shippingAddressId');
+      localStorage.removeItem('paymentId');
+      this.router.navigate(['orders']);
      }
        
      );

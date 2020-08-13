@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductService } from '../services/product.service';
 import { Subscription } from 'rxjs';
+import { CartService } from '../services/cart.service';
 
 @Component({
   selector: 'app-product',
@@ -13,7 +14,8 @@ export class ProductComponent implements OnInit {
   public product;
   public id;
 
-  constructor(private activatedRoute: ActivatedRoute, public productService: ProductService) {
+  constructor(private activatedRoute: ActivatedRoute,
+    private cartService: CartService, public productService: ProductService) {
     this.subscription = activatedRoute.params.subscribe(
       (params: any) => this.id = params['id']
     );
@@ -25,6 +27,10 @@ export class ProductComponent implements OnInit {
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
+  }
+
+  addToCart(product) {
+    this.cartService.addToCart(product);
   }
 
   ngOnInit(): void {

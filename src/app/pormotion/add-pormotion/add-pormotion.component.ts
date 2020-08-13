@@ -73,7 +73,8 @@ export class AddPormotionComponent {
   addPormotion() {
     this.submitted = true;
     let pormotion = this.pormotionForm.value;
-    if ( this.isAdmin && pormotion.value.vendorId == null ) {
+    console.log()
+    if ( this.isAdmin && pormotion.vendorId == null ) {
       this.errorMessage = "vendor is required";
     } else {
    

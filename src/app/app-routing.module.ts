@@ -18,6 +18,8 @@ import { UsersComponent } from './admin/users/users.component';
 import { CategoryComponent } from './admin/category/category/category.component';
 import { VendorDashboardComponent } from './vendor-dashboard/vendor-dashboard.component';
 import { PaymentMethodComponent } from './payment-method/payment-method.component';
+import { OrderHistoryComponent } from './order-history/order-history.component';
+import { OrderHistoryDetailsComponent } from './order-history-details/order-history-details.component';
 
 
 
@@ -41,7 +43,9 @@ const routes: Routes = [
   {path:"billing-details",component:BillingDetailsComponent},
   {path:"confirm-order",component:ConfirmOrderComponent},
   {path: "category",component:CategoryComponent},
-  {path: "admin/users", component:UsersComponent}
+  {path: "admin/users", component:UsersComponent},
+  {path: "orders", component:OrderHistoryComponent},
+  { path: 'orderDetails', component: OrderHistoryDetailsComponent }
 ];
 
 @NgModule({

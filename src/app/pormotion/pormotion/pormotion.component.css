@@ -7,6 +7,11 @@
 
 }
 
+#filter{
+  display: flow-root;
+}
+
+
 .row{
     padding-bottom: 1%;
 }

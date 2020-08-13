@@ -16,28 +16,89 @@ import { EditPormotionComponent } from '../edit-pormotion/edit-pormotion.compone
 export class PormotionComponent implements OnInit {
   errorMessage;
   pormotions;
-  displayedColumns: string[] = ['title', 'startDate', 'endDate', 'discount'];
+  isAdmin = false;
+  currentUser;
+  pormotionsType="allPormotions";
 
-  constructor(private pormationService: PormotionService, public matDialog: MatDialog) { }
-  
+  constructor(private pormationService: PormotionService,
+    private userService: UserService, public matDialog: MatDialog) { }
+
 
   ngOnInit(): void {
-    this.getAllPormotion();
+
+    this.currentUser = this.userService.getCurrentUser();
+    if (this.currentUser.role.role == 'admin') {
+      this.isAdmin = true;
+      this.getAllPormotion();
+    } else {
+      this.isAdmin = false;
+      this.getVendorPormotion(this.currentUser.id);
+    }
   }
 
-  
-  getAllPormotion(){
-    this.pormationService.getAllPormotion().subscribe(data => {
-      console.log(">>> pro: ",data)
-      this.pormotions = data
-        }
-      ,
-      error => console.log(error))
 
-      console.log("Tesr")
+  fetchPormotionssBy(event){
+    let value = event.target.value;
+    console.log(">>change products: ",value);
+    if(value != this.pormotionsType){
+      this.pormotionsType = value;
      
+      if(value == 'allPormotions'){
+        this.getAllPormotion();
+      }else if(value == 'deleted'){
+        this.getDeletedPormotion();
+      }else if(value == 'nonDeleted'){
+        this.getNonDeletedPormotion();
+      }
+
     }
-  
+
+  }
+
+  getAllPormotion() {
+    this.pormationService.getAllPormotion().subscribe(data => {
+
+      this.pormotions = data
+    }
+      ,
+      error => this.errorMessage = error
+
+    )
+  }
+
+  getDeletedPormotion() {
+    this.pormationService.getDeletedPormotion().subscribe(data => {
+
+      this.pormotions = data
+    }
+      ,
+      error => this.errorMessage = error
+
+    )
+  }
+
+  getNonDeletedPormotion() {
+    this.pormationService.getNonDeletedPormotion().subscribe(data => {
+
+      this.pormotions = data
+    }
+      ,
+      error => this.errorMessage = error
+
+    )
+  }
+
+  getVendorPormotion(vendorId) {
+    this.pormationService.getVendorPormotion(vendorId).subscribe(data => {
+
+      this.pormotions = data
+    }
+      ,
+      error => this.errorMessage = error
+
+    )
+  }
+
   openAddPormotionModal() {
     const dialogConfig = new MatDialogConfig();
     // The user can't close the dialog by clicking outside its body
@@ -47,29 +108,30 @@ export class PormotionComponent implements OnInit {
     dialogConfig.width = "600px";
     // https://material.angular.io/components/dialog/overview
     const modalDialog = this.matDialog.open(AddPormotionComponent, dialogConfig);
-    
+
     modalDialog.afterClosed().subscribe(result => {
       console.log('The dialog was closed', result);
       this.pormotions.push(result.createdPormotion);
     });
   }
-  
-  confirmBox(index, promotionId){
+
+  confirmBox(index, promotionId, action) {
     Swal.fire({
-      title: 'Are you sure want to remove?',
-      text: 'You will not be able to recover this file!',
+      title: 'Are you sure want to'+action+'?',
+      text: 'You will not see this again on '+action+' list',
       icon: 'warning',
       showCancelButton: true,
-      confirmButtonText: 'Yes, delete it!',
+      confirmButtonText: 'Yes, do it!',
       cancelButtonText: 'No, keep it'
     }).then((result) => {
       if (result.value) {
+       
         this.deletePormotion(index, promotionId);
 
       } else if (result.dismiss === Swal.DismissReason.cancel) {
         Swal.fire({
           title: 'Cancelled',
-          text:'Your pormotion is safe :)',
+          text: 'Your pormotion is safe :)',
           icon: 'error',
           showConfirmButton: false,
           timer: 1500
@@ -78,47 +140,51 @@ export class PormotionComponent implements OnInit {
       }
     })
   }
-  deletePormotion(index, userId){
-    console.log('>>> delete user: ',userId);
-    this.pormationService.deletePormotion(userId).subscribe(data =>{
-      this.pormotions.splice(index, 1);
+  deletePormotion(index, userId) {
+    console.log('>>> delete user: ', userId);
+    this.pormationService.deletePormotion(userId).subscribe(data => {
+      this.pormotions[index].deleted = !this.pormotions[index].deleted ;
+      if(this.pormotionsType != 'allPormotions'){
+        this.pormotions.splice(index, 1);
+      }
+      
       Swal.fire({
         title: 'Deleted!',
-        text:'Your pormotion has been deleted.',
+        text: 'Your pormotion has been deleted.',
         icon: 'success',
         showConfirmButton: false,
         timer: 1500
       }
       )
     },
-    (error) => {
-      Swal.fire({
-        title: 'Somthing went wrong',
-        text:error,
-        icon: 'error'
-      }
-      )
-      this.errorMessage = error;
-    })
+      (error) => {
+        Swal.fire({
+          title: 'Somthing went wrong',
+          text: error,
+          icon: 'error'
+        }
+        )
+        this.errorMessage = error;
+      })
   }
 
 
-  openEditPormotionModal(index, pormotion){ 
+  openEditPormotionModal(index, pormotion) {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = false;
     dialogConfig.id = "app-edit-pormotion";
     dialogConfig.maxHeight = "800px";
     dialogConfig.width = "600px";
-    dialogConfig.data = {pormotion: pormotion};
+    dialogConfig.data = { pormotion: pormotion };
 
     const modalDialog = this.matDialog.open(EditPormotionComponent, dialogConfig);
 
-    modalDialog.afterClosed().subscribe(result=>{
+    modalDialog.afterClosed().subscribe(result => {
       console.log('The dialog was closed', result);
-      if(result != null){
+      if (result != null) {
         this.pormotions[index] = result.updatedPormotion;
       }
-      
+
     });
   }
 }

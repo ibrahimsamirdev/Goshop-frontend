@@ -105,6 +105,13 @@ export class ProductService {
     );
   }
 
+
+  getValidPromotions(vendorId){
+
+    return this.httpClient.get(environment.productService+"/promotion/vendor/validPromotions/"+vendorId).pipe(
+      catchError(this.errorHandl)
+    );
+   }
     // Error handling
     errorHandl(error) {
       let errorMessage = '';
@@ -124,5 +131,5 @@ export class ProductService {
       return throwError(errorMessage);
    }
 
-
+  
 }

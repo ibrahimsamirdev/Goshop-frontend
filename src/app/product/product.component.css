@@ -13,3 +13,7 @@ hr {
 .breadcrumb-item {
   font-size: 16px;
 }
+
+h3 {
+  font-weight: 500;
+}

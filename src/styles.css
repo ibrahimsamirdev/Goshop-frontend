@@ -18,13 +18,6 @@ body {
     font-size: 15px;
 }
 
-.page h1,
-.page h2,
-.page h3,
-.page h4 {
-    font-weight: 500;
-}
-
 .bs-callout {
     font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial;
     padding: 20px;

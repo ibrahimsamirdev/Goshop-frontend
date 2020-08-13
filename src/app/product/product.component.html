@@ -3,7 +3,7 @@
         <div class="col">
             <nav aria-label="breadcrumb" *ngIf="product">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="/">Home</a></li>
+                    <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
                     <li class="breadcrumb-item active">{{product.category.partentCaregory?.name}}</li>
                     <li class="breadcrumb-item active">{{product.category.name}}</li>
                 </ol>

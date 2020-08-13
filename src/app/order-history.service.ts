@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Optional } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { throwError } from 'rxjs';
+import { throwError, Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
 @Injectable({
@@ -10,22 +10,27 @@ import { catchError } from 'rxjs/operators';
 export class OrderHistoryService {
 
 
-  getPormotionsURL: string =environment.orderService+'/order/';
+  getOrderURL: string =environment.orderService+'/order/';
+  getOrderProductsURL: string =environment.productService+'/product/findAllProductIn';
 
   constructor(private Http:HttpClient) { }
 
   getAllOrders( id) {
-    return this.Http.get(this.getPormotionsURL+"/user/"+id).pipe(
+    return this.Http.get(this.getOrderURL+"/user/"+id).pipe(
       catchError(this.errorHandl)
     );
   }
-  getAllOrderProductData(list: any[]) {
-    return this.Http.get(this.getPormotionsURL+"/user/"+list).pipe(
-      catchError(this.errorHandl)
-    );
+  getAllOrderProductData(list )   {
+    let myHeaders = new Headers();
+    myHeaders.append('Content-Type', 'application/json'); 
+    let myParams = new URLSearchParams();
+    myParams.append('list', list);
+    return this.Http.post(this.getOrderProductsURL,  list)
   }
+ 
+
   getAllOrderData(id: any) {
-    return this.Http.get(this.getPormotionsURL+"/user/"+id).pipe(
+    return this.Http.get(this.getOrderURL+"/"+id).pipe(
       catchError(this.errorHandl)
     );
   }

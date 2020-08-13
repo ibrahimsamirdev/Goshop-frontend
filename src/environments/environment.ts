@@ -7,7 +7,8 @@ export const environment = {
   apiGateway: 'http://localhost:8765',
   userManagement: 'http://localhost:8081',
   productService: 'http://localhost:8082',
-  orderService:'http://localhost:8000'
+  reportService: 'http://localhost:10091',
+  orderService: 'http://localhost:8000'
 };
 
 /*

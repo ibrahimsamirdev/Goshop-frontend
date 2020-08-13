@@ -1,7 +1,39 @@
 <div class="row">
-    <div class="col-2 ">
+    <div class="col-2 " *ngIf="!isAdmin">
        <app-sidenav></app-sidenav>
    </div>
+   <div class="col-2 " *ngIf="isAdmin">
+    <div class="user-panel">
+        <img src="assets/images/logo.png" width="115" /><br/>
+        <span class="logo">GoShop</span>
+      </div>
+
+    <div class="collapse show d-md-flex bg-dark pt-2 pl-0 min-vh-100" id="sidebar">
+        <ul class="nav flex-column flex-nowrap overflow-hidden">
+           
+            <li class="item list-group-item list-group-item-action "><!-- list-group-item-success-->
+                <!-- <div class="nav-link"><i class="fa fa-dashboard"></i> <span class="d-none d-sm-inline">Dashboard</span></div> -->
+                <a class="nav-link" routerLink="/dashboard"><i class="fa fa-dashboard"></i> Dashboard</a>
+            </li>
+            <li class="item list-group-item list-group-item-action">
+                <a class="nav-link text-truncate" routerLink="/admin/users"><i class="fa fa-users"></i> Users</a>
+            </li>
+            
+            <li class="item list-group-item list-group-item-action">
+                <a class="nav-link text-truncate" routerLink="/admin/products"><i class="fa fa-product-hunt"></i> Products</a>
+            </li>
+
+            <li class="item list-group-item list-group-item-action">
+                <a class="nav-link text-truncate" routerLink="/pormotion"><i class="fa fa-product-hunt"></i> Pormotion</a>
+            </li>
+
+            <li class="item list-group-item list-group-item-action">
+                <a class="nav-link text-truncate" routerLink="/category"><i class="fa fa-product-hunt"></i> Category</a>
+            </li>
+            </ul>
+    </div>
+
+    </div>
    <div class="col-lg-10 ">
         <div class="container">
             <app-dashboard></app-dashboard>

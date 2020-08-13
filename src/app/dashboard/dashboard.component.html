@@ -1,11 +1,19 @@
 
+<div class="conatiner">
 
-    <div class="row">
-        <button type="button" class="btn btn-info" (click)="showReport()">Show Report</button>
+
+      <div class="  content "  id="filter"><!-- justify-content-center  align-items-center-->
+        <div class="float-left">
+          <button type="button" class="btn btn-info" (click)="showReport()">Show Report</button>
+        </div>
+        <div class="float-right">
+          <button type="button" class="btn btn-info" (click)="sendEmailReport()">Send Report by mail</button>
+        </div>
+        
       </div>
-      <div class="row">
+      <div class="row content">
 
-        <div class="col-6 chart-wrapper">
+        <div class="col-6 chart-wrapper ">
             <canvas baseChart 
                 [datasets]="lineChartData" 
                 [labels]="lineChartLabels" 
@@ -36,3 +44,4 @@
           </canvas>
         </div>
       </div>
+  </div>

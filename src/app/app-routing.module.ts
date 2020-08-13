@@ -18,12 +18,36 @@ import { UsersComponent } from './admin/users/users.component';
 import { CategoryComponent } from './admin/category/category/category.component';
 import { VendorDashboardComponent } from './vendor-dashboard/vendor-dashboard.component';
 import { PaymentMethodComponent } from './payment-method/payment-method.component';
+import { OrderHistoryComponent } from './order-history/order-history.component';
+import { OrderHistoryDetailsComponent } from './order-history-details/order-history-details.component';
 import { ProductComponent } from './product/product.component';
 
 
 
 const routes: Routes = [
-  { path: "", component: HomeComponent },
+  {path: "", component: HomeComponent},
+  {path: "login", component: LoginComponent},
+  {path: "register", component: RegisterComponent},
+  {path: "vendor/employees", component:VendorEmployeesComponent},
+  {path: "vendor/products", component:VendorProductsComponent},
+
+  {path:"cart/cart-items",component:CartItemsComponent
+  // , canActivate: [AuthGuardGuard]
+},
+  {path: "pormotion", component:PormotionComponent},
+  {path: "admin/products", component:ProductsComponent},
+  {path:"vendor/dashboard", component:VendorDashboardComponent},
+  
+  {path:"checkouts",component:CheckoutComponent},
+  {path:"payment-method",component:PaymentMethodComponent},
+  {path:"shipping-details",component:ShippingDetailsComponent},
+  {path:"billing-details",component:BillingDetailsComponent},
+  {path:"confirm-order",component:ConfirmOrderComponent},
+  {path: "category",component:CategoryComponent},
+  {path: "admin/users", component:UsersComponent},
+  {path: "orders", component:OrderHistoryComponent},
+  { path: 'orderDetails', component: OrderHistoryDetailsComponent },
+  
   { path: "login", component: LoginComponent },
   { path: "register", component: RegisterComponent },
   { path: "vendor/employees", component: VendorEmployeesComponent },
@@ -35,7 +59,7 @@ const routes: Routes = [
   },
   { path: "pormotion", component: PormotionComponent },
   { path: "admin/products", component: ProductsComponent },
-  { path: "vendor/dashboard", component: VendorDashboardComponent },
+  { path: "dashboard", component: VendorDashboardComponent },
 
   { path: "checkouts", component: CheckoutComponent },
   { path: "payment-method", component: PaymentMethodComponent },

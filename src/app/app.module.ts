@@ -78,6 +78,7 @@ import { PaymentMethodComponent } from './payment-method/payment-method.componen
 
     ])
   ],
+ 
   providers: [AuthGuardGuard],
   bootstrap: [AppComponent]
 })

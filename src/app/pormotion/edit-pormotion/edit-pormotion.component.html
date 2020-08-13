@@ -1,5 +1,15 @@
 <form [formGroup]="pormotionForm" (submit)="editPormotion()">
 
+  <div class="form-group">
+    <label for="title">Title</label>
+    <input type="text" formControlName="title" class="form-control" id="title" 
+    [ngClass]="{'is-invalid':submitted && formControls.title.errors}" placeholder="Enter title">
+      <small  class="text-danger" *ngIf="submitted  && hasError('title','required')">
+        Title is required.
+      </small>  
+  </div>
+
+
     <div class="form-group">
         <label for="startDate">start Date</label>
         <input type="date" formControlName="startDate" class="form-control" id="startDate" 
@@ -26,7 +36,15 @@
             discount is required.
           </small>  
       </div>
+
+      <div *ngIf="isAdmin" class="form-group" >
+        <label for="vendor">Vendor</label>
+        <select class="form-control" id="vendor"formControlName="vendorId">
+          <option [ngValue]="0">select Vendor</option>
+          <option *ngFor="let v of vendors" [ngValue] ="v.id">{{v.email}}</option>
+        </select>
+    </div>
         <p *ngIf="errorMessage" class="err">{{errorMessage}}</p >
-        <button type="submit" class="btn btn-primary">Edit-Done</button>
+        <button type="submit" class="btn btn-primary">Edit</button>
       </form>
     

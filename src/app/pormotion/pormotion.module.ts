@@ -10,6 +10,8 @@ import { EditPormotionComponent } from './edit-pormotion/edit-pormotion.componen
 import { AddPormotionComponent } from './add-pormotion/add-pormotion.component';
 import { PormotionComponent } from './pormotion/pormotion.component';
 import { PormotionSidenavComponent } from './pormotion-sidenav/pormotion-sidenav.component';
+import { AppModule } from '../app.module';
+import { SidenavComponent } from '../sidenav/sidenav.component';
 
 
 
@@ -28,6 +30,7 @@ import { PormotionSidenavComponent } from './pormotion-sidenav/pormotion-sidenav
     FormsModule,
     ReactiveFormsModule,
     MaterialModule,
+  
     RouterModule.forChild([
       {path:'',component:PormotionComponent}
     ])

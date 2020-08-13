@@ -5,3 +5,7 @@
 .row{
     padding-bottom: 1%;
 }
+
+.err {
+    color: red;
+  }

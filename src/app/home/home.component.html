@@ -1,4 +1,4 @@
-<div class="container home">
+<div class="container page home">
     <div class="bs-callout bs-callout-primary">
         <h4>Our Latest Products</h4>
     </div>
@@ -12,8 +12,10 @@
                     <h2 class="price">${{product.price}}</h2>
                 </div>
                 <div class="card-link">
-                    <button  class="btn btn-warning mt-auto float-right" (click)="addToCart(product)"><i class="fa fa-shopping-cart"></i> </button>
-                    <button class="btn btn-info mt-auto float-left"><i class="fa fa-eye"></i> View</button>
+                    <button class="btn btn-warning mt-auto float-right" (click)="addToCart(product)"><i
+                            class="fa fa-shopping-cart"></i> </button>
+                    <button [routerLink]="['product',product.id]" class="btn btn-info mt-auto float-left"><i
+                            class="fa fa-eye"></i> View</button>
                 </div>
             </div>
         </div>

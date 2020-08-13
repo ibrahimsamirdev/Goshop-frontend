@@ -1,4 +1,4 @@
-<div class="container home">
+<div class="container page home">
     <div class="bs-callout bs-callout-primary">
         <h4>Our Latest Products</h4>
     </div>
@@ -12,7 +12,9 @@
                     <h2 class="price">${{product.price}}</h2>
                 </div>
                 <div class="card-link">
-                    <button class="btn btn-primary mt-auto float-left"><i class="fa fa-eye"></i> View</button>
+                    <a [routerLink]="['product',product.id]" class="btn btn-primary mt-auto float-left"><i
+                            class="fa fa-eye"></i>
+                        View</a>
                 </div>
             </div>
         </div>

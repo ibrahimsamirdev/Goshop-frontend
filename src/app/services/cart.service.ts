@@ -51,6 +51,14 @@ export class CartService {
     return products;
   }
 
+  getLocalShippingAddress() {
+    console.log(localStorage.getItem("shippingAddress"));
+    const address =
+      JSON.parse(localStorage.getItem("shippingAddress")) || null;
+
+    return address;
+  }
+
   getPaymentMethodByUserId(userId){
     return this.httpClient.get(environment.userManagement+"/api/paymentmethod/user/"+userId).pipe(
       catchError(this.errorHandl)
@@ -73,6 +81,13 @@ export class CartService {
 
   addShippingAddress(shippingAddress){
     return this.httpClient.post(environment.userManagement+"/api/address", shippingAddress).pipe(
+      catchError(this.errorHandl)
+    );
+  }
+
+  confirmOrder(order){
+    console.log("confirm service")
+    return this.httpClient.post(environment.orderService+"/order/", order).pipe(
       catchError(this.errorHandl)
     );
   }

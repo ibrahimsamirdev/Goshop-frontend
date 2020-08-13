@@ -48,16 +48,16 @@
                     <div class="row">
                       <div class="col-xs-6 col-sm-6 col-md-6">
                         <address>
-                          <strong>Emad Shehata</strong>
+                          <strong>{{currentUser.name}}</strong>
                           <br />
-                          Fairfield, Iowa, 1000 N 4th ST. 
+                          {{currentAdderss.city}}, {{currentAdderss.state}}, {{currentAdderss.street}}. 
                           <br />
-                          <abbr title="Phone">P:</abbr> (+1) 8124794942
+                          <abbr title="Phone">P:</abbr> (+1) {{currentUser.mobile}}
                         </address>
                       </div>
                       <div class="col-xs-6 col-sm-6 col-md-6 text-right">
                         <p>
-                          <em>Date: 08/10/2020</em>
+                          <em>Date: {{todayDate | date}}</em>
                         </p>
 
                       </div>
@@ -75,15 +75,15 @@
                           </tr>
                         </thead>
                         <tbody>
-                          <tr >
+                          <tr *ngFor="let product of products">
                             <!-- *ngFor="let product of products" -->
                             <td class="col-md-6">
-                              <h6>
-                                <em>Laptop</em>
-                              </h6>
+                              <h5>
+                                <em>{{product.title}}</em>
+                              </h5>
                             </td>
                             <td></td>
-                            <td class="col-md-4 text-center">$2000</td>
+                            <td class="col-md-4 text-center">${{product.price}}</td>
                           </tr>
                           <!-- <tr>
                             <td></td>
@@ -105,13 +105,13 @@
                             </td>
                             <td class="text-center text-danger">
                               <h4>
-                                <strong>$3000</strong>
+                                <strong>${{totalPrice}}</strong>
                               </h4>
                             </td>
                           </tr>
                         </tbody>
                       </table>
-                      <button type="button" class="btn btn-success btn-lg btn-block">
+                      <button type="button" class="btn btn-info btn-lg btn-block" (click)="confirmOrder()">
                         Pay Now <span class="glyphicon glyphicon-chevron-right"></span>
                       </button>
                     </div>

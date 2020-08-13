@@ -1,17 +1,8 @@
 .board {
-    /* margin: 60px auto;
-    height: 500px; */
-    min-height: 765px;
+    margin: 60px auto;
+    
     background: #fff;
-    overflow-y: auto;
   }
-
-  /* .board .nav-tabs {
-    position: relative;
-    margin: 40px auto;
-    margin-bottom: 0;
-    box-sizing: border-box;
-  } */
   .nav-tabs {
     border-bottom: 1px solid #ddd;
   }
@@ -61,13 +52,13 @@
     display: block;
     padding: 10px 15px;
   }
-  /* a {
+  a {
     color: #337ab7;
     text-decoration: none;
   }
   a {
     background-color: transparent;
-  } */
+  }
   #status-buttons a.active span.round-tabs.one {
     background: #22c222;
     color: #fff;
@@ -102,4 +93,9 @@
     text-align: center;
     font-size: 25px;
   }
-  
+  .pointer {cursor: pointer;}
+  .tColor{color: #17a2b8;}
+
+  .pointer:hover {
+    background-color: #e2e9f1 !important;
+    }

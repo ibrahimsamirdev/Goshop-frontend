@@ -12,6 +12,7 @@ body {
 
 .page {
     font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    padding-bottom: 52px;
 }
 
 .page p {

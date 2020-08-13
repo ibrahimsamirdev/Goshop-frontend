@@ -1,4 +1,4 @@
-<p>checkout works!</p>
+<!-- <p>checkout works!</p> -->
 <section>
     <div class="container">
       <div class="board">
@@ -35,35 +35,46 @@
                 <ul class="list-group mb-3">
                   <li
                     class="list-group-item d-flex justify-content-between lh-condensed"
+                    *ngFor="let product of products"
                     
                   >
                   <!-- *ngFor="let product of checkoutProducts" -->
-                    <div>
+                    <div class="col-5">
                       <img
-                        src="https://images.spot.im/v1/production/ayv6wjohiqkhkikty1nj"
+                        [src]="product.imageUrl"
                         width="150"
                         height="100"
                       />
                     </div>
-                    <div style="padding: 10px;">
-                      <h6 class="my-0">HP Laptop</h6>
-                      <p>Product Seller : Emad Shehata</p>
+                    <div class="col-6" style="padding: 10px;">
+                      <h4 class="my-0">{{product.title}}</h4>
+                      <p>{{product.description}}</p>
                     </div>
-                    <span class="text-muted">$ 2000</span>
+                    <div class="col-1">
+                      <span class="text-muted">${{product.price}}</span>
+                    </div>
+                  
                   </li>
                   <hr />
                   <li class="list-group-item d-flex justify-content-between">
-                    <span>Total (Dollar)</span>
-                    <strong>$ 2000</strong>
+                    <div class="col-11">
+                      <span> <strong>Total (Dollar)</strong></span>
+                    </div>
+                    <div class="col-1">
+                      <strong>$ {{totalPrice}}</strong>
+                    </div>
+                    
                   </li>
                 </ul>
-                <div class="float-right">
+                
+                <div class="float-left">
+                  
                   <a
-                    class="btn btn-default"
+                    class="btn btn-info"
                     [routerLink]="['/shipping-details']"
                     routerLinkActive="active"
-                    >Next</a
-                  >
+                    role="button"
+                    >Next</a>
                 </div>
               </div>
               
@@ -71,7 +82,9 @@
         <!-- End Content Area -->
       </div>
   
+      <!-- <button class="btn btn-success"> Tests</button> -->
       <!-- For Debugging: show our formData as it is being typed -->
       <!-- <pre>{{ formData | json }}</pre> -->
     </div>
+    <!-- <button class="btn btn-success"> Tests</button> -->
   </section>

@@ -95,7 +95,8 @@ export class ShippingDetailsComponent implements OnInit {
       this.cartService.addShippingAddress(A).subscribe(data =>{
         this.currentAdress = data;
         localStorage.setItem('shippingAddressId',this.currentAdress.id);
-        this.router.navigate(["confirm-order"]);
+        localStorage.setItem('shippingAddress',JSON.stringify(this.currentAdress));
+        this.router.navigate(["payment-method"]);
       }, 
       (error) => {
         this.errorMessage = error;
@@ -104,7 +105,8 @@ export class ShippingDetailsComponent implements OnInit {
     }else{
       console.log(">>>>>> use current card <<<")
       localStorage.setItem('shippingAddressId',this.currentAdress.id);
-      this.router.navigate(["confirm-order"]);
+      localStorage.setItem('shippingAddress',JSON.stringify( this.currentAdress));
+      this.router.navigate(["payment-method"]);
     }
   }
 

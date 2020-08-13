@@ -34,6 +34,8 @@ import { ShippingDetailsComponent } from './shipping-details/shipping-details.co
 import { BillingDetailsComponent } from './billing-details/billing-details.component';
 import { ConfirmOrderComponent } from './confirm-order/confirm-order.component';
 import { PaymentMethodComponent } from './payment-method/payment-method.component';
+import { OrderHistoryComponent } from './order-history/order-history.component';
+import { OrderHistoryDetailsComponent } from './order-history-details/order-history-details.component';
 
 
 @NgModule({
@@ -60,7 +62,9 @@ import { PaymentMethodComponent } from './payment-method/payment-method.componen
     ShippingDetailsComponent,
     BillingDetailsComponent,
     ConfirmOrderComponent,
-    PaymentMethodComponent
+    PaymentMethodComponent,
+    OrderHistoryComponent,
+    OrderHistoryDetailsComponent
 
   ],
   imports: [

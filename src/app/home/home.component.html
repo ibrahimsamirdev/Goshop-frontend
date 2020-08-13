@@ -12,9 +12,9 @@
                     <h2 class="price">${{product.price}}</h2>
                 </div>
                 <div class="card-link">
-                    <a [routerLink]="['product',product.id]" class="btn btn-primary mt-auto float-left"><i
-                            class="fa fa-eye"></i>
-                        View</a>
+                    <button class="btn btn-warning mt-auto float-right" (click)="addToCart(product)"><i
+                            class="fa fa-shopping-cart"></i> </button>
+                    <button class="btn btn-info mt-auto float-left"><i class="fa fa-eye"></i> View</button>
                 </div>
             </div>
         </div>

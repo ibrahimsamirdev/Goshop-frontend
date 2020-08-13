@@ -6,3 +6,6 @@ img{
     overflow-y:scroll;
     max-height: 600px;
 }
+#Total{
+    font-weight: bold;
+}

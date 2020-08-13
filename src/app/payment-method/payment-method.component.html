@@ -25,19 +25,28 @@
         </div>
         <!-- End Navigation Area (Circular Tabs) -->
   
-        <div >
-            <button  class="btn btn-primary float-right" (click)="newCardForm()">Add New Card</button>
-        </div>
+
+
+ 
         <!-- Content Area -->
         <div class="tab-content">
-
+          <div class="container mt-3">
+            <div class="col-md order-md-1">
+          <div class="row">
+            <div class="col-6">
+              <h4 class="mb-3" id="title">Payment Method</h4>
+            </div>
+              <div class="col-6" >
+                <button  class="btn btn-primary float-right" (click)="newCardForm()">Add New Card</button>
+            </div>
+            </div>
 
             <form [formGroup]= "paymentForm" (submit)="confirmPayment()">
                 <div class="form-group">
                   <label for="cardNo">Card Number</label>
                   <input [disabled]="!isNewCard" type="text" formControlName="cardNo" class="form-control" id="cardNo" 
                   [ngClass]="{'is-invalid':submitted && formControls.cardNo.errors}"  placeholder="Enter Card Number">
-                  <small  class="text-danger" *ngIf="submitted && hasError('email', 'required')">
+                  <small  class="text-danger" *ngIf="submitted && hasError('cardNo', 'required')">
                     Card Number is required.
                   </small>  
                 </div>
@@ -97,6 +106,8 @@
         </div>
         <!-- End Content Area -->
       </div>
+    </div>
+  </div>
   
       <!-- For Debugging: show our formData as it is being typed -->
       <!-- <pre>{{ formData | json }}</pre> -->

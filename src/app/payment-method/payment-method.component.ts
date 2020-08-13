@@ -3,6 +3,7 @@ import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms'
 import { ConfirmedValidator } from '../confirmed.validator';
 import { UserService } from '../services/user.service';
 import { CartService } from '../services/cart.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-payment-method',
@@ -20,7 +21,7 @@ export class PaymentMethodComponent implements OnInit {
 
   
   constructor(private formBuilder: FormBuilder,private userService: UserService,
-    private cartService: CartService) { }
+    private cartService: CartService,private router: Router) { }
 
   ngOnInit(): void {
    
@@ -88,6 +89,7 @@ export class PaymentMethodComponent implements OnInit {
       this.cartService.addPaymentMethod(p).subscribe(data =>{
         this.currentPaymentMethod = data;
         localStorage.setItem('paymentId',this.currentPaymentMethod.id);
+        this.router.navigate(["confirm-order"]);
       }, 
       (error) => {
         this.errorMessage = error;
@@ -96,6 +98,7 @@ export class PaymentMethodComponent implements OnInit {
     }else{
       console.log(">>>>>> use current card <<<")
       localStorage.setItem('paymentId',this.currentPaymentMethod.id);
+      this.router.navigate(["confirm-order"]);
     }
   }
   public get formControls(){

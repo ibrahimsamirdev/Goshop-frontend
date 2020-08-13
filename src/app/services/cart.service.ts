@@ -26,19 +26,22 @@ export class CartService {
     localStorage.setItem("avct_item", JSON.stringify(products));
   }
 
-  // Removing cart from local
-  removeLocalCartProduct(product) {
-    const products = JSON.parse(localStorage.getItem("avct_item"));
-
-    for (let i = 0; i < products.length; i++) {
-      if (products[i].id === product.id) {
-        products.splice(i, 1);
-        break;
-      }
-    }
-    // ReAdding the products after remove
+  updateCart(products){
     localStorage.setItem("avct_item", JSON.stringify(products));
   }
+  // Removing cart from local
+  // removeLocalCartProduct(product) {
+  //   const products = JSON.parse(localStorage.getItem("avct_item"));
+
+  //   for (let i = 0; i < products.length; i++) {
+  //     if (products[i].id === product.id) {
+  //       products.splice(i, 1);
+  //       break;
+  //     }
+  //   }
+  //   // ReAdding the products after remove
+  //   localStorage.setItem("avct_item", JSON.stringify(products));
+  // }
 
   // Fetching Locat CartsProducts
   getLocalCartProducts() {
@@ -57,6 +60,19 @@ export class CartService {
 
   addPaymentMethod(paymentMethod){
     return this.httpClient.post(environment.userManagement+"/api/paymentmethod", paymentMethod).pipe(
+      catchError(this.errorHandl)
+    );
+  }
+
+  getShippingAddressByUserId(userId){
+    return this.httpClient.get(environment.userManagement+"/api/address/user/shipping/"+userId).pipe(
+      catchError(this.errorHandl)
+    );
+    
+  }
+
+  addShippingAddress(shippingAddress){
+    return this.httpClient.post(environment.userManagement+"/api/address", shippingAddress).pipe(
       catchError(this.errorHandl)
     );
   }

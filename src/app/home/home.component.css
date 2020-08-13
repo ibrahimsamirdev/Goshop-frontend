@@ -34,3 +34,25 @@
     overflow: hidden;
     text-overflow: ellipsis;
 }
+
+.search-form {
+    border: solid 1px #eee;
+    background-color: #eee;
+    padding: 10px 25px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.form-title {
+    font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    font-size: 22px;
+    color: #428bca;
+    padding-right: 20px;
+}
+
+.searchResultStatement {
+    text-align: center;
+    margin: 40px;
+    font-weight: 400;
+    color: #797979;
+}

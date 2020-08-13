@@ -111,31 +111,37 @@ export class ProductService {
     );
   }
 
-
-  getValidPromotions(vendorId){
-
-    return this.httpClient.get(environment.productService+"/promotion/vendor/validPromotions/"+vendorId).pipe(
+  searchProducts(keyword, categoryid, minprice, maxprice) {
+    return this.httpClient.get(environment.productService + "/product/search?keyword=" + keyword + "&categoryid=" + categoryid + "&minprice=" + minprice + "&maxprice=" + maxprice).pipe(
       catchError(this.errorHandl)
     );
-   }
-    // Error handling
-    errorHandl(error) {
-      let errorMessage = '';
-      if(error.error instanceof ErrorEvent) {
-        // Get client-side error
-        errorMessage = error.error.message;
-      }else if(error.error instanceof ProgressEvent) {
-        // Get client-side error
-        errorMessage = error.message;
-      }  else {
-        // Get server-side error
-        errorMessage = error.error;
-        // `Error Code: ${error.status}\nMessage: ${error.message}`;
-      }
-      console.log('>>> erroe message: ',errorMessage);
-      console.log('>>> erroe : ',error);
-      return throwError(errorMessage);
-   }
+  }
 
-  
+
+  getValidPromotions(vendorId) {
+
+    return this.httpClient.get(environment.productService + "/promotion/vendor/validPromotions/" + vendorId).pipe(
+      catchError(this.errorHandl)
+    );
+  }
+  // Error handling
+  errorHandl(error) {
+    let errorMessage = '';
+    if (error.error instanceof ErrorEvent) {
+      // Get client-side error
+      errorMessage = error.error.message;
+    } else if (error.error instanceof ProgressEvent) {
+      // Get client-side error
+      errorMessage = error.message;
+    } else {
+      // Get server-side error
+      errorMessage = error.error;
+      // `Error Code: ${error.status}\nMessage: ${error.message}`;
+    }
+    console.log('>>> erroe message: ', errorMessage);
+    console.log('>>> erroe : ', error);
+    return throwError(errorMessage);
+  }
+
+
 }

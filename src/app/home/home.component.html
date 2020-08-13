@@ -2,6 +2,23 @@
     <div class="bs-callout bs-callout-primary">
         <h4>Our Latest Products</h4>
     </div>
+    <div class="search-form-wrapper">
+        <form [formGroup]="searchForm" class="form-inline search-form" (submit)="doSearch()">
+            <span class="form-title">Search</span>
+            <input type="text" formControlName="keyword" class="form-control mr-sm-2" id="keyword"
+                placeholder="Product Name">
+            <input type="number" formControlName="minprice" class="form-control mr-sm-2" id="minprice"
+                placeholder="Min Price">
+            <input type="number" formControlName="maxprice" class="form-control mr-sm-2" id="maxprice"
+                placeholder="Max Price">
+
+
+            <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i> Search</button>
+        </form>
+    </div>
+
+    <h2 class="searchResultStatement" *ngIf="!products?.length">No Result found</h2>
+
     <div class="row">
         <div class="col-sm-3" *ngFor="let product of products; let i=index">
             <div class="card shadow p-3 mb-5 bg-white rounded">

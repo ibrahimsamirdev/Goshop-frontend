@@ -45,6 +45,12 @@ export class HomeComponent implements OnInit {
     let fields = this.searchForm.controls;
     console.log(fields);
 
+    if (fields.minprice.value == null) {
+      fields.minprice.setValue('');
+    }
+    if (fields.maxprice.value == null) {
+      fields.maxprice.setValue('');
+    }
     this.productService.searchProducts(fields.keyword.value, '', fields.minprice.value, fields.maxprice.value).subscribe(data => {
       console.log(data);
 
